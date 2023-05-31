@@ -4,14 +4,12 @@
 <link rel="stylesheet" href="./css/style.css">
 */
 
-/*ロゴ これつかわんかも
-.rogo-png {
-    background-image:url(./img.jpg);画像のURL
-    background-repeat: no-repeat;画像の繰り返しを指示
-    width: auto;横幅のサイズの指示
-    height: auto;縦幅のサイズの指示
+.page {                                        /*ページのサイズと背景色*/
+    width: 100%;
+    height: 100%;
+    background-color: #f596aa;
+    
 }
-*/
 
 
 /*------------------
@@ -31,10 +29,10 @@
     width: 20%;
 }
 
-
-
-
-
+.nav-item {                                             /* 右上のリンク */
+    width: 30%;
+    height: 100%;
+}
 
 
 /*背景色*/
@@ -68,3 +66,10 @@ a:hover {
     padding: 0;
 }
 
+
+/* 掲示板Fuji */
+.board {
+    /*font-family: cursive;*/
+    margin-top : 2%;
+    margin-bottom : 2%;
+}
