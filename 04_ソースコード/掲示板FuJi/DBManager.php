@@ -20,7 +20,7 @@ class DBManager
     public function test()
     {
         $pdo = $this->dbConnect();
-        $sql = "SELECT default_price FROM device_information WHERE device_id = 1";
+        $sql = "SELECT user_name FROM user WHERE user_id = '0000000'";
         $ps = $pdo->query($sql);
         $ps->execute();
         $result = $ps->fetchAll();
