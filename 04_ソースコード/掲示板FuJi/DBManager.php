@@ -1,13 +1,11 @@
 <?php
 class DBManager
 {
-    // ※※※※※※※※※※※※※※※【注意】※※※※※※※※※※※※※※※　まだ接続出来ません
 
 
     // DB接続のメソッド
     private function dbConnect()
     {
-        // 【要修正】接続先は前回の開発のまま
         $dsn = 'mysql:host=mysql215.phy.lolipop.lan;dbname=LAA1418480-fuji;charset=utf8';
         $user = 'LAA1418480';
         $password = 'rFaX58P7wxxAKAN';
