@@ -35,12 +35,17 @@
 }
 
 
+
+
+
+
+
 /*背景色*/
 .text-center{
     background-color: #f596aa;
 }
 
-/*リンクのホバー*/
+/*リンクのホバー  ホームの＋*/
 a:hover {
     color: red;
 }
