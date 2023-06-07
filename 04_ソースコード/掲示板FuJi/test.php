@@ -8,6 +8,7 @@
 </head>
 <body>
 <?php
+// gestのtest
     require_once './DBManager.php';
     $dbmng = new DBManager();
     $test = $dbmng->test();
