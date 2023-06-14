@@ -16,9 +16,15 @@
     foreach ($test as $row) {
         $name = $row['user_name'];
     }
-
+    
     echo '<h1>'.$name.'</h1>';
+    echo '<h1>'.$test[0][0].'</h1>';
+    
+    $testDate = $dbmng->getTime();
+    echo '<h1>'.$testDate.'</h1>';
 
+    $test2 = $dbmng->chatRegist("0000000","0000000","test");
+    
     ?>
 </body>
 </html>
