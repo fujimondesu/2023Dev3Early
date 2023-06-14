@@ -25,73 +25,246 @@ class DBManager
         return $result;
     }
 
+    public function testDate()
+    {
+        $pdo = $this->dbConnect();
+        $sql = "SELECT CURRENT_TIME";
+        $ps = $pdo->query($sql);
+        $ps->execute();
+        $result = $ps->fetchAll();
+        return $result;
+    }
+
     // --------------------------------以下処理------------------------------------
 
-    //商品テーブルから商品名を取得
-    public function getDeviceNames()
+    // (要らんかも)ユーザーがログインしているかチェック
+    public function loginCheck($uId)
     {
         $pdo = $this->dbConnect();
-        $sql = "SELECT device_name FROM device_information";
+        $sql = "SELECT * FROM user WHERE user_id = ?";
         // $sql = "SELECT device_name, default_price, evaluation_value FROM device_information";
 
-        $ps = $pdo->query($sql);
+        $ps = $pdo->prepare($sql);
+        $ps->bindValue(1, $uId, PDO::PARAM_STR);
         $ps->execute();
-
         $result = $ps->fetchAll();
         return $result;
     }
 
-    // 商品テーブルから参考価格を取得
-    public function getDevicePrices()
+    // ユーザーが存在しているか、パスワードが正しいか（呼出）チェック
+    public function userExist($mail,$pass)
     {
         $pdo = $this->dbConnect();
-        $sql = "SELECT default_price, sale_price FROM device_information";
+        $sql = "SELECT user_id FROM user WHERE mail_address = ?";
 
-        $ps = $pdo->query($sql);
-        $ps->execute();
-
-        $result = $ps->fetchAll();
-        return $result;
-    }
-
-    // 商品テーブルから評価値を取得
-    public function getDeviceEvaluationValue()
-    {
-        $pdo = $this->dbConnect();
-        $sql = "SELECT evaluation_value FROM device_information";
-
-        $ps = $pdo->query($sql);
-        $ps->execute();
-
-        $result = $ps->fetchAll();
-        return $result;
-    }
-
-    //商品テーブルから評価数を取得
-    public function getDeviceEvaluationNumber()
-    {
-        $pdo = $this->dbConnect();
-        $sql = "SELECT number_of_evaluation FROM device_information";
-
-        $ps = $pdo->query($sql);
-        $ps->execute();
-
-        $result = $ps->fetchAll();
-        return $result;
-    }
-
-    //ログイン時にユーザーを探す
-    public function userSearch($mail, $pass)
-    {
-        $pdo = $this->dbConnect();
-        $sql = "SELECT user_id FROM user WHERE e_mail = ? AND password = ?";
         $ps = $pdo->prepare($sql);
         $ps->bindValue(1, $mail, PDO::PARAM_STR);
+        $ps->execute();
+        $result1 = $ps->fetchAll();
+        // user_idが「0000000」以外で、パスワードが一致していれば遷移、それ以外はエラー表示
+
+        // ゲストモード以外か判定
+        if($result1['user_id'] != "0000000") {
+            $result2 = $this->passCheck($result1['user_id'], $pass);
+            // ユーザーが存在し、パスワードが一致しているか
+            if($result2[0] != "") {
+                return $result1['user_id'];
+            }else{
+                return "error";
+            }
+        }else{
+            return "error";
+        }
+    }
+
+    // パスワードが正しいかチェック
+    public function passCheck($uId, $pass)
+    {
+        $pdo = $this->dbConnect();
+        $sql = "SELECT * FROM user WHERE user_id = ? AND password = ?";
+
+        $ps = $pdo->prepare($sql);
+        $ps->bindValue(1, $uId, PDO::PARAM_STR);
         $ps->bindValue(2, $pass, PDO::PARAM_STR);
         $ps->execute();
         $result = $ps->fetchAll();
         return $result;
     }
+
+    // メールアドレス重複チェック(1行以上結果が返ってきたら重複している)
+    public function mailDoubleCheck($mail)
+    {
+        $pdo = $this->dbConnect();
+        $sql = "SELECT * FROM user WHERE mail_address = ?";
+
+        $ps = $pdo->prepare($sql);
+        $ps->bindValue(1, $mail, PDO::PARAM_STR);
+        $ps->execute();
+        $result = $ps->fetchAll();
+        return $result;
+    }
+
+    // ユーザー名重複チェック(1行以上結果が返ってきたら重複している)
+    public function userDoubleCheck($name)
+    {
+        $pdo = $this->dbConnect();
+        $sql = "SELECT * FROM user WHERE user_name = ?";
+
+        $ps = $pdo->prepare($sql);
+        $ps->bindValue(1, $name, PDO::PARAM_STR);
+        $ps->execute();
+        $result = $ps->fetchAll();
+        return $result;
+    }
+    
+    // userテーブルに新規登録
+    public function userRegist($name, $mail, $pass)
+    {
+        $pdo = $this->dbConnect();
+        // 一番最後のuser_idを取得し、+1されたuser_idを生成する
+        $maxId = $this->getMaxUserId();
+        $maxId = $this->strToNum($maxId);
+        $maxId++;
+        $maxId = $this->numToStr($maxId);
+
+        $sql = "INSERT INTO user (user_id,user_name,mail_address,password) VALUES (?,?,?,?)";
+        $ps = $pdo->prepare($sql);
+        $ps->bindValue(1, $maxId, PDO::PARAM_STR);
+        $ps->bindValue(2, $name, PDO::PARAM_STR);
+        $ps->bindValue(3, $mail, PDO::PARAM_STR);
+        $ps->bindValue(4, $pass, PDO::PARAM_STR);
+        $ps->execute();
+        $result = $ps->fetchAll();
+        return $result;
+    }
+
+    // 一番最後のuser_idを取得
+    public function getMaxUserId() {
+        $pdo = $this->dbConnect();
+        $sql = "SELECT user_id FROM user ORDER BY user_id DESC LIMIT 1";
+        $ps = $pdo->prepare($sql);
+        $ps->execute();
+        $result = $ps->fetchAll();
+        // $resultが二次元配列になってるから[0][0]を付けてる
+        return $result[0][0];
+    }
+
+    // 一番最後のmsg_idを取得
+    public function getMaxMsgId() {
+        $pdo = $this->dbConnect();
+        $sql = "SELECT msg_id FROM chat_msg ORDER BY msg_id DESC LIMIT 1";
+        $ps = $pdo->prepare($sql);
+        $ps->execute();
+        $result = $ps->fetchAll();
+        // $resultが二次元配列になってるから[0][0]を付けてる
+        return $result[0][0];
+    }
+
+    // 一番最後のroom_idを取得
+    public function getMaxRoomId() {
+        $pdo = $this->dbConnect();
+        $sql = "SELECT room_id FROM chat_room ORDER BY room_id DESC LIMIT 1";
+        $ps = $pdo->prepare($sql);
+        $ps->execute();
+        $result = $ps->fetchAll();
+        // $resultが二次元配列になってるから[0][0]を付けてる
+        return $result[0][0];
+    }
+
+    // 0埋めされた文字から数字に変換
+    public function strToNum($num) {
+        $replace = str_replace('0', '', $num);
+        $replace = (int)$replace;
+        return $replace;
+    }
+    
+    // 数字を0埋めして文字(7桁)に変換
+    public function numToStr($num) {
+        $replace = sprintf('%07d', $num);
+        return $replace;
+    }
+
+    // 送信されたコメントをデータベースに登録
+    public function chatRegist($uId, $rId, $chat) {
+        $pdo = $this->dbConnect();
+        // 一番最後のmsg_idを取得し、+1されたmsg_idを生成する
+        $maxId = $this->getMaxMsgId();
+        $maxId = $this->strToNum($maxId);
+        $maxId++;
+        $maxId = $this->numToStr($maxId);
+
+        // 時間を取得
+        $time = $this->getTime();
+        
+        $sql = "INSERT INTO chat_msg (msg_id, room_id, user_id, chat_main, sent_time) VALUES (?,?,?,?,?)";
+        $ps = $pdo->prepare($sql);
+        $ps->bindValue(1, $maxId, PDO::PARAM_STR);
+        $ps->bindValue(2, $rId, PDO::PARAM_STR);
+        $ps->bindValue(3, $uId, PDO::PARAM_STR);
+        $ps->bindValue(4, $chat, PDO::PARAM_STR);
+        $ps->bindValue(5, $time, PDO::PARAM_STR);
+        $ps->execute();
+        $result = $ps->fetchAll();
+        return $result;
+    }
+
+    // ユーザー情報取得
+    public function userInfoGet($uId) {
+        $pdo = $this->dbConnect();
+        $sql = "SELECT * FROM user WHERE user_id = ?";
+
+        $ps = $pdo->prepare($sql);
+        $ps->bindValue(1, $uId, PDO::PARAM_STR);
+        $ps->execute();
+        $result = $ps->fetchAll();
+        return $result;
+    }
+
+
+    // ユーザーのパスワードを更新
+    public function updatePass($uId, $pass) {
+        $pdo = $this->dbConnect();
+        $sql = "UPDATE user SET password = ? WHERE user_id = ?;";
+
+        $ps = $pdo->prepare($sql);
+        $ps->bindValue(1, $pass, PDO::PARAM_STR);
+        $ps->bindValue(2, $uId, PDO::PARAM_STR);
+        $ps->execute();
+        $result = $ps->fetchAll();
+        return $result;
+    }
+
+    // 新規作成されたスレッドをデータベースに登録
+    public function threadRegist($gId, $rName, $detail) {
+        $pdo = $this->dbConnect();
+
+        // 一番最後のroom_idを取得し、+1されたroom_idを生成する
+        $maxId = $this->getMaxRoomId();
+        $maxId = $this->strToNum($maxId);
+        $maxId++;
+        $maxId = $this->numToStr($maxId);
+
+        $sql = "INSERT INTO chat_room (room_id, genre_id, room_name, detail) VALUES (?,?,?,?)";
+
+        $ps = $pdo->prepare($sql);
+        $ps->bindValue(1, $maxId, PDO::PARAM_STR);
+        $ps->bindValue(2, $gId, PDO::PARAM_STR);
+        $ps->bindValue(3, $rName, PDO::PARAM_STR);
+        $ps->bindValue(4, $detail, PDO::PARAM_STR);
+        $ps->execute();
+        $result = $ps->fetchAll();
+        return $result;
+    }
+
+    // フォーマットを指定して時間を取得（分まで）
+    public function getTime() {
+        // YYYY年MM月DD日 hh:mm
+        $date = date('Y') . "年" . date('n') . "月" . date('j') . "日　" . date('H') . ":" . date('i');
+        return $date;
+    }
+
+    // --------------------------------ここまで書いた------------------------------------
+
 
     //商品idから商品の情報を取得
     public function deviceSearch($id)
