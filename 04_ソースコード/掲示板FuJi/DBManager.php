@@ -263,6 +263,42 @@ class DBManager
         return $date;
     }
 
+    // ジャンル一覧取得
+    public function getGenre() {
+        $pdo = $this->dbConnect();
+        $sql = "SELECT * FROM chat_genre";
+        $ps = $pdo->prepare($sql);
+        $ps->execute();
+        $result = $ps->fetchAll();
+        // 「genre_id」と「genre_name」の二次元配列
+        return $result;
+    }
+
+    // 選択したジャンルのスレッド一覧取得
+    public function getThreadList($gId) {
+        $pdo = $this->dbConnect();
+        $sql = "SELECT room_name, detail FROM chat_room WHERE genre_id = ?";
+
+        $ps = $pdo->prepare($sql);
+        $ps->bindValue(1, $gId, PDO::PARAM_STR);
+        $ps->execute();
+        $result = $ps->fetchAll();
+        return $result;
+    }
+    
+    // 選択したスレッドのチャット一覧取得(途中)
+    public function getChatList($tId) {
+        $pdo = $this->dbConnect();
+        $sql = "SELECT room_name, detail FROM chat_msg WHERE genre_id = ?";
+
+        $ps = $pdo->prepare($sql);
+        $ps->bindValue(1, $tId, PDO::PARAM_STR);
+        $ps->execute();
+        $result = $ps->fetchAll();
+        return $result;
+    }
+
+
     // --------------------------------ここまで書いた------------------------------------
 
 
