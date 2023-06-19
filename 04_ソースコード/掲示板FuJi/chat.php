@@ -38,7 +38,6 @@
         <div style="background-color: aqua; width: 20%; height: 100%; line-height: 50px;">
           ユーザー名
           <a href="./new_topic.html"><i class="bi bi-plus"></i></a>
-          </i>
         </div>
         <div style="width: 80%; height: 100%; text-align: center;">雑談</div>
       </div>
