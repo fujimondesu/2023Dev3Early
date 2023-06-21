@@ -40,25 +40,29 @@
     height: 100%;
 }
 
-.header-parent {
+
+
+.header-color {
     background-color: pink;
-    display: flex;
-    justify-content: space-between;
 }
 
+.header-left {
+    width: 10%;
+    text-align: left;
+}
 
+.header-right {
+    float: left;
+}
 
-/* 要らんかも */
-/* .header-child1 {
+.right {
+    text-align: center;
 
 }
 
-.header-child2 {
-
-} */
-
-
-
+.clear {
+    clear: both;
+}
 
 
 
