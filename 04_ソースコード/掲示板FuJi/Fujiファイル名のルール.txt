@@ -1,11 +1,14 @@
 掲示板FuJiのファイル名のルール
 
 p      ➡　　　パスワード(password)
-u      ➡　　　ユーザー(user)
-su     ➡　　　サインアップ(sign up)
-i      ➡　　　情報(information)
+usr    ➡　　　ユーザー(user)
+s_up   ➡　　　サインアップ(sign up)
+inf    ➡　　　情報(information)
 com    ➡　　　完了(completion)
 reg    ➡　　　完了(registration)
+fg     ➡　　　忘れる(forget)
+chk    ➡　　　確認(check)
+
 <<<<<<< HEAD
 =======
 
