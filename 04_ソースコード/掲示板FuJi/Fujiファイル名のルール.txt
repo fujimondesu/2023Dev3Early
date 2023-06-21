@@ -8,6 +8,7 @@ com    ➡　　　完了(completion)
 reg    ➡　　　完了(registration)
 fg     ➡　　　忘れる(forget)
 chk    ➡　　　確認(check)
+chg    ➡　　　変更(change)
 
 
 $_SESSION['page']      ==  どのページから来たか
