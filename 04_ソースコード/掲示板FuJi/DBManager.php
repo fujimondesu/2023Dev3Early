@@ -34,51 +34,51 @@ class DBManager
 
     // --------------------------------以下処理------------------------------------
 
-    // (要らんかも)ユーザーがログインしているかチェック
-    public function loginCheck($uId) {
-        $pdo = $this->dbConnect();
-        $sql = "SELECT * FROM user WHERE user_id = ?";
-        // $sql = "SELECT device_name, default_price, evaluation_value FROM device_information";
-
-        $ps = $pdo->prepare($sql);
-        $ps->bindValue(1, $uId, PDO::PARAM_STR);
-        $ps->execute();
-        $result = $ps->fetchAll();
-        return $result;
-    }
-
     // ユーザーが存在しているか、パスワードが正しいか（呼出）チェック
     public function userExist($mail,$pass) {
+        $result = $this->existCheck($mail);
+
+        if($result != "error") {
+            $result2 = $this->passCheck($mail, $pass);
+            if($result2 != "error") {
+                $pdo = $this->dbConnect();
+                $sql = "SELECT user_id FROM user WHERE mail_address = ?";
+        
+                $ps = $pdo->prepare($sql);
+                $ps->bindValue(1, $mail, PDO::PARAM_STR);
+                $ps->execute();
+                $result1 = $ps->fetchAll();
+                return $result1['user_id'];
+            }
+        }
+        return "error";
+    }
+    
+    // ユーザーが存在しているかチェック
+    public function existCheck($mail) {
         $pdo = $this->dbConnect();
         $sql = "SELECT user_id FROM user WHERE mail_address = ?";
 
         $ps = $pdo->prepare($sql);
         $ps->bindValue(1, $mail, PDO::PARAM_STR);
         $ps->execute();
-        $result1 = $ps->fetchAll();
-        // user_idが「0000000」以外で、パスワードが一致していれば遷移、それ以外はエラー表示
+        $result = $ps->fetchAll();
 
-        // ゲストモード以外か判定
-        if($result1['user_id'] != "0000000") {
-            $result2 = $this->passCheck($result1['user_id'], $pass);
-            // ユーザーが存在し、パスワードが一致しているか
-            if($result2[0] != "") {
-                return $result1['user_id'];
-            }else{
-                return "error";
-            }
+        // 値が返ってきたか、ゲストモード以外か
+        if($result['user_id'] != "0000000" || !empty($result['user_id'])) {
+            return $result['user_id'];
         }else{
             return "error";
         }
     }
 
     // パスワードが正しいかチェック
-    public function passCheck($uId, $pass) {
+    public function passCheck($mail, $pass) {
         $pdo = $this->dbConnect();
-        $sql = "SELECT * FROM user WHERE user_id = ? AND password = ?";
+        $sql = "SELECT * FROM user WHERE mail_address = ? AND password = ?";
 
         $ps = $pdo->prepare($sql);
-        $ps->bindValue(1, $uId, PDO::PARAM_STR);
+        $ps->bindValue(1, $mail, PDO::PARAM_STR);
         $ps->bindValue(2, $pass, PDO::PARAM_STR);
         $ps->execute();
         $result = $ps->fetchAll();
@@ -162,9 +162,6 @@ class DBManager
         $maxId = $this->strToNum($maxId);
         $maxId++;
         $maxId = $this->numToStr($maxId);
-
-        // 時間を取得
-        // $time = $this->getTime();
         
         $sql = "INSERT INTO chat_msg (msg_id, room_id, user_id, chat_main, sent_time) VALUES (?,?,?,?,now())";
         $ps = $pdo->prepare($sql);
@@ -172,7 +169,6 @@ class DBManager
         $ps->bindValue(2, $rId, PDO::PARAM_STR);
         $ps->bindValue(3, $uId, PDO::PARAM_STR);
         $ps->bindValue(4, $chat, PDO::PARAM_STR);
-        // $ps->bindValue(5, $time, PDO::PARAM_STR);
         $ps->execute();
         $result = $ps->fetchAll();
         return $result;

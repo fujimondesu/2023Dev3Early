@@ -40,6 +40,22 @@
     height: 100%;
 }
 
+.header-parent {
+    background-color: pink;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+/* 要らんかも */
+/* .header-child1 {
+
+}
+
+.header-child2 {
+
+} */
 
 
 
