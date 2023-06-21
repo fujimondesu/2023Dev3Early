@@ -34,19 +34,6 @@ class DBManager
 
     // --------------------------------以下処理------------------------------------
 
-    // (要らんかも)ユーザーがログインしているかチェック
-    public function loginCheck($uId) {
-        $pdo = $this->dbConnect();
-        $sql = "SELECT * FROM user WHERE user_id = ?";
-        // $sql = "SELECT device_name, default_price, evaluation_value FROM device_information";
-
-        $ps = $pdo->prepare($sql);
-        $ps->bindValue(1, $uId, PDO::PARAM_STR);
-        $ps->execute();
-        $result = $ps->fetchAll();
-        return $result;
-    }
-
     // ユーザーが存在しているか、パスワードが正しいか（呼出）チェック
     public function userExist($mail,$pass) {
         $result = $this->existCheck($mail);
