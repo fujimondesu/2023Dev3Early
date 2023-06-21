@@ -9,8 +9,6 @@ reg    ➡　　　完了(registration)
 fg     ➡　　　忘れる(forget)
 chk    ➡　　　確認(check)
 
-<<<<<<< HEAD
-=======
 
 $_SESSION['page']      ==  どのページから来たか
 $_SESSION['user_name'] ==  ユーザー名
@@ -21,4 +19,3 @@ $_SESSION['genre_id']  ==  ジャンルid
 $_SESSION['room_id']   ==  スレッドid（話題）
 $_SESSION['error']     ==  エラー文（複数の場合は,でくっつける予定）
 $_SESSION['chat']      ==  チャット文
->>>>>>> 8a44760f4797fdb1de0add16d64e37c38bd47dce
