@@ -26,7 +26,10 @@ $_POST['user_id']      == ユーザーid
 $_POST['name']         == ユーザー名
 $_POST['mail']         == メールアドレス
 $_POST['pass']         == パスワード
-$_SESSION['room_id']   == スレッドid（話題）
+$_POST['room_id']      == スレッドid（話題）
+$_POST['room_name']    == スレッド名（話題）
+$_POST['detail']       == スレッド説明（話題）
+$_POST['genre_id']     == ジャンルid
 $_POST['chat']         == チャット文
 
 
