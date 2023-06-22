@@ -26,68 +26,60 @@
           <img src="./img/logo.png" width="auto" height="100%" alt="logo" />
         </div>
         <div class="col-3 header-R-parent">
-          <div class="header-R-child-on">
-            home
-          </div>
-          <div class="header-R-child-on">
-            user
-          </div>
-          <div class="header-R-child-off">
-            logout
-          </div>
+          <div class="header-R-child-on">home</div>
+          <div class="header-R-child-on">user</div>
+          <div class="header-R-child-off">logout</div>
         </div>
       </div>
     </div>
 
     <!-- 戻るボタン -->
-    <a
-      href="#" class="btn-back">＜戻る</a>
+    <a href="#" class="btn-back">＜戻る</a>
 
     <!-- 掲示板FuJi -->
-    <h1 class="board">
-      掲示板FuJi
-    </h1>
+    <h1 class="board">掲示板FuJi</h1>
 
     <!-- フォーム -->
     <div class="container-fluid">
       <div class="row justify-content-center">
-        <form class="border rounded bg-white col-lg-4 col-md-6 col-10 p-3">
+        <form
+          action="./input_chk.php"
+          method="post"
+          class="border rounded bg-white col-lg-4 col-md-6 col-10 p-3"
+        >
           <h2 class="mt-3 mb-5">ログインして会話に参加しましょう!</h2>
           <div class="mb-3">
             <input
-              type="email"
+              type="text"
               class="form-control rounded-pill w-75 m-auto"
-              id="inputMail"
+              name="mail"
               placeholder="メールアドレス"
             />
           </div>
           <div class="mb-3">
             <input
-              type="password"
+              type="text"
               class="form-control rounded-pill w-75 m-auto"
-              id="inputPass"
+              name="pass"
               placeholder="パスワード"
             />
           </div>
           <div>
-            <a href="./home.php">
-              <button
-                type="button"
-                class="btn btn-primary rounded-pill my-4 px-5"
-              >
-                ログイン
-              </button>
-            </a>
+            <input
+              type="submit"
+              class="btn btn-primary rounded-pill my-4 px-5"
+              value="ログイン"
+            />
           </div>
           <div>
-            <a href="./pass_change_1.html">
+            <a href="./p_chg_usr_chk.html">
               <button type="button" class="btn btn-link">
                 パスワードを忘れた方はこちら
               </button>
             </a>
           </div>
           <div>
-            <a href="./sign_up_1.html">
+            <a href="./s_up.html">
               <button type="button" class="btn btn-link">新規登録</button>
             </a>
           </div>
