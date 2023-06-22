@@ -8,6 +8,6 @@ if(empty($_POST['mail']) || empty($_POST['pass'])) {
 }else{
     // エラー文を消去
     $_SESSION['error'] = "";
-    header('Location: u_exist.php');
+    header('Location: usr_exist.php');
 }
 ?>

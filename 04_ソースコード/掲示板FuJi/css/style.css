@@ -58,6 +58,7 @@
 }
 
 .header-R-child-on {
+    text-decoration: none;
     margin-right: 40px;
     margin-left: 40px;
     margin-top: 9px;
@@ -65,6 +66,7 @@
 }
 
 .header-R-child-off {
+    text-decoration: none;
     margin-right: 40px;
     margin-left: 40px;
     margin-top: 9px;
@@ -128,4 +130,12 @@ a:hover {
     font-family: cursive;
     margin-bottom: 20px;
     color: white;
+}
+
+
+/*------------------
+    エラー表示
+--------------------*/
+.error {
+    color: red;
 }

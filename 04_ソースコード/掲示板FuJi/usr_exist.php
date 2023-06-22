@@ -1,7 +1,5 @@
 <?php
 session_start();
-// POST以外の不要な「user_id」をリセット
-unset($_SESSION['user_id']);
 require_once './DBManager.php';
 $dbmng = new DBManager();
 // 存在チェック
