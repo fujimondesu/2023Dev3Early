@@ -42,27 +42,52 @@
 
 
 
-.header-color {
+.header-style {
     background-color: pink;
+    height: 50px;
 }
 
-.header-left {
-    width: 10%;
+.header-L {
+    height: 100%;
     text-align: left;
 }
 
-.header-right {
-    float: left;
+.header-R-parent {
+    display: flex;
+    justify-content: flex-end;
 }
 
-.right {
-    text-align: center;
-
+.header-R-child-on {
+    margin-right: 40px;
+    margin-left: 40px;
+    margin-top: 9px;
+    color: white;
 }
 
-.clear {
-    clear: both;
+.header-R-child-off {
+    margin-right: 40px;
+    margin-left: 40px;
+    margin-top: 9px;
+    color: #9A9A9A;
 }
+
+
+
+/*------------------
+    戻るボタン
+--------------------*/
+
+.btn-back {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 10px;
+    margin-left: 15px;
+    color: white;
+    text-decoration: none;
+    font-size: 120%;
+}
+
+
 
 
 
@@ -100,8 +125,7 @@ a:hover {
 
 /* 掲示板Fuji */
 .board {
-    /*font-family: cursive;*/
-    margin-top : 2%;
-    margin-bottom : 2%;
-    color: #ffffff;
+    font-family: cursive;
+    margin-bottom: 20px;
+    color: white;
 }
