@@ -14,7 +14,7 @@ $user_id = $dbmng->existCheck($_POST['mail']);
 // ユーザー存在チェック
 if($user_id == "error") {
     $_SESSION['error'] = "ユーザーが存在しません。";
-    header('Location: p_change_displey.html');
+    header('Location: p_chg_usr_chk.html');
 }else{
     // あくまで変更したいユーザー。ログインしているユーザーとは限らないため、「SESSION」ではなく「POST」を使う
     $_POST['user_id'] = $user_id;
