@@ -20,3 +20,13 @@ $_SESSION['genre_id']  ==  ジャンルid
 $_SESSION['room_id']   ==  スレッドid（話題）
 $_SESSION['error']     ==  エラー文（複数の場合は,でくっつける予定）
 $_SESSION['chat']      ==  チャット文
+
+
+$_POST['user_id']      == ユーザーid
+$_POST['name']         == ユーザー名
+$_POST['mail']         == メールアドレス
+$_POST['pass']         == パスワード
+$_SESSION['room_id']   == スレッドid（話題）
+$_POST['chat']         == チャット文
+
+
