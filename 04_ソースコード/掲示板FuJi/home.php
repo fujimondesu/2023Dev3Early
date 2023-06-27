@@ -1,8 +1,7 @@
 <?php
 session_start();
 $_SESSION['error'] = "";
-// テスト用
-// $_SESSION['user_id'] = "0000000";
+$_SESSION['user_id'] = "0000001";
 ?>
 
 <!-- ホーム画面(最初ここ) -->
@@ -28,15 +27,16 @@ $_SESSION['error'] = "";
       </div>
       <div class="col-3 header-R-parent">
         <a href="./home.php" class="header-R-child-on">home</a>
-        <a href="./usr_inf.html" class="header-R-child-on">user</a>
 
         <!-- 「login」「logout」切り替え -->
         <?php
-        $link = "login";
         if ($_SESSION['user_id'] == "0000000") {
-          $link = "logout";
+          echo '<div class="header-R-child-off">user</div>';
+          echo '<a href="./login.php" class="header-R-child-on">login</a>';
+        }else{
+          echo '<a href="./usr_inf.html" class="header-R-child-on">user</a>';
+          echo '<a href="./logout.php" class="header-R-child-on">logout</a>';
         }
-        echo '<a href="' . $link . '.php" class="header-R-child-on">' . $link . '</a>';
         ?>
 
         <!-- <a href="./logout.php" class="header-R-child-off">logout</a> -->

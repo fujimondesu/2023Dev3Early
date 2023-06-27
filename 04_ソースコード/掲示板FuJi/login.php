@@ -23,8 +23,8 @@ session_start();
       </div>
       <div class="col-3 header-R-parent">
         <a href="./home.php" class="header-R-child-on">home</a>
-        <a href="./usr_inf.html" class="header-R-child-on">user</a>
-        <a href="./logout.php" class="header-R-child-off">logout</a>
+        <div class="header-R-child-off">user</div>
+        <div class="header-R-child-off">logout</div>
       </div>
     </div>
   </div>
