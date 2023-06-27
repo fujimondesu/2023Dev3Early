@@ -13,29 +13,32 @@
   <body class="text-center">
     <!-- ヘッダー -->
     <div class="container-fluid" style="padding-left: 0">
-      <div class="row header-style">
-        <div class="col-9 header-L">
-          <img src="./img/logo.png" width="auto" height="100%" alt="logo" />
-        </div>
-        <div class="col-3 header-R-parent">
-          <a href="./home.php" class="header-R-child-on">home</a>
-          <a href="./usr_inf.html" class="header-R-child-on">user</a>
-          <div class="header-R-child-off">logout</div>
-        </div>
+    <div class="row header-style">
+      <div class="col-9 header-L">
+        <img src="./img/logo.png" width="auto" height="100%" alt="logo" />
+      </div>
+      <div class="col-3 header-R-parent">
+        <a href="./home.php" class="header-R-child-on">home</a>
+
+        <!-- 「login」「logout」切り替え -->
+        <?php
+        if ($_SESSION['user_id'] == "0000000") {
+          echo '<div class="header-R-child-off">user</div>';
+          echo '<a href="./login.php" class="header-R-child-on">login</a>';
+        }else{
+          echo '<a href="./usr_inf.html" class="header-R-child-on">user</a>';
+          echo '<a href="./logout.php" class="header-R-child-on">logout</a>';
+        }
+        ?>
+
+        <!-- <a href="./logout.php" class="header-R-child-off">logout</a> -->
       </div>
     </div>
+  </div>
   
     <!-- 戻るボタン -->
     <div style="width: 80px;">
-      <a href="
-  
-      <?php
-      // 現在は「login.php」に設定している。本番は設定を消す
-      $_SESSION['page'] = "login.php";
-      echo $_SESSION['page'];
-      ?>
-          
-      " class="btn-back">＜戻る</a>
+      <a href="#" class="btn-back">＜戻る</a>
     </div>
     
   
@@ -46,17 +49,20 @@
     <div class="container-fluid">
       <div class="row justify-content-center">
         <form action="./input_chk.php" method="post" class="border rounded bg-white col-lg-4 col-md-6 col-10 p-3">
-          <h2 class="mt-3">ユーザー情報</h2>
+          <h2 class="mt-3 mb-5" >ユーザー情報</h2>
+          <div class="mb-3">ユーザー名変更</div>
+          <div class="mt-3 mb-3">
+          <input type="text" class="form-control rounded-pill w-75 m-auto" name="text" placeholder="ユーザー名" />
+        </div>
+        <div class="mb-3">パスワード変更</div>
+        <div class="mb-3">
+          <input type="text" class="form-control rounded-pill w-75 m-auto" name="pass" placeholder="パスワード" />
+        </div>
+        <div class="mb-3">
+          <input type="text" class="form-control rounded-pill w-75 m-auto" name="pass" placeholder="確認用パスワード" />
+        </div>
           <div>
-            <p>メールアドレス:monfuji0508@icloud.com</p>
-            <p>パスワード:＊＊＊＊＊＊</p>
-            <p>ユーザー名:フジモン</p>
-          </div>
-          <div>
-            <input type="submit" class="btn btn-primary rounded-pill my-4 px-5" value="ユーザー情報" />
-          </div>
-          <div>
-            <input type="submit" class="btn btn-primary rounded-pill my-1 px-5" value="ホーム画面へ" />
+            <input type="submit" class="btn btn-primary rounded-pill my-4 px-5" value="確認に進む" />
           </div>
         </form>
       </div>
