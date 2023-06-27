@@ -40,6 +40,9 @@ session_start();
     ?>
         
     " class="btn-back">＜戻る</a>
+    
+    <!-- こんな処理 -->
+    <!--      <a href=" phpの処理 " class="btn-back">＜戻る</a>      -->
   </div>
 
   <!-- 掲示板FuJi -->
