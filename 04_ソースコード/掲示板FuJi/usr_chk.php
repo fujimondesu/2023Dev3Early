@@ -11,12 +11,12 @@ if(empty($_POST['user_name']) || empty($_POST['mail']) || empty($_POST['pass']))
     header('Location: su.html');
 }
 
-// 2.ユーザー名が重複しているか
-$name = $dbmng->userDoubleCheck($_POST['name']);
-if(!empty($name)) {
-    $_SESSION['error'] = "ユーザー名が使用されています。";
-    header('Location: su.html');
-}
+// // 2.ユーザー名が重複しているか
+// $name = $dbmng->userDoubleCheck($_POST['name']);
+// if(!empty($name)) {
+//     $_SESSION['error'] = "ユーザー名が使用されています。";
+//     header('Location: su.html');
+// }
 
 // 3.メールアドレスが重複しているか
 $mail = $dbmng->mailDoubleCheck($_POST['mail']);
