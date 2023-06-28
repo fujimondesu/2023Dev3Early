@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!doctype html>
 <!-- 新規登録　確認 -->
 <html lang="ja">
@@ -45,8 +49,7 @@
                 <p>メールアドレス : monfuji0508@icloud.com</p>
                 <p>パスワード : 114514</p>
                 <p>ユーザー名 : フジモン</p>
-                <a href="./login.html"><button type="button" class="btn btn-primary rounded-pill my-4 px-5">登録する</button></a>
-                
+                <a href="./usr_reg.php"><button type="button" class="btn btn-primary rounded-pill my-4 px-5">登録する</button></a>
             </form>
         </div>
     </div>
