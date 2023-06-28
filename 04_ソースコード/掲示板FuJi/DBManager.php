@@ -120,6 +120,18 @@ class DBManager
         $result = $ps->fetchAll();
         return $result;
     }
+    
+    // ユーザー名取得
+    public function userNameGet($uId) {
+        $pdo = $this->dbConnect();
+        $sql = "SELECT user_name FROM user WHERE user_id = ?";
+
+        $ps = $pdo->prepare($sql);
+        $ps->bindValue(1, $uId, PDO::PARAM_STR);
+        $ps->execute();
+        $result = $ps->fetchAll();
+        return $result;
+    }
 
     // ユーザーのパスワードを更新
     public function updatePass($uId, $pass) {
