@@ -11,23 +11,26 @@
   </head>
   
   <!-- ヘッダー　-->
-  <div style="display: flex; width: 100%; height: 50px">
-    <a href="./home.html">
-      <img src="./img/rogo.png" width="100px" height="50px" alt="ロゴ" />
-    </a>
+  <div class="container-fluid" style="padding-left: 0">
+    <div class="row header-style">
+      <div class="col-9 header-L">
+        <img src="./img/logo.png" width="auto" height="100%" alt="logo" />
+      </div>
+      <div class="col-3 header-R-parent">
+        <a href="./home.php" class="header-R-child-on">home</a>
+        <a href="./usr_inf.html" class="header-R-child-on">user</a>
 
-    <div class="hedda-M"></div>
+        <!-- 「login」「logout」切り替え -->
+        <?php
+        $link = "login";
+        if ($_SESSION['user_id'] == "0000000") {
+          $link = "logout";
+        }
+        echo '<a href="' . $link . '.php" class="header-R-child-on">' . $link . '</a>';
+        ?>
 
-    <div class="hedda-R">
-      
-      <ul
-        class="nav justify-content-end; ml-auto"
-        style="width: 100%; height: 100%"
-      >
-      <a class="nav-link" href="./home.html">home</a>
-      <a class="nav-link" href="./user_info_change_2.html">user</a>
-      <a class="nav-link" href="./logout.html">logout</a>
-      </ul>
+        <!-- <a href="./logout.php" class="header-R-child-off">logout</a> -->
+      </div>
     </div>
   </div>
 
