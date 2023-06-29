@@ -222,7 +222,7 @@ class DBManager
     // 選択したジャンルのスレッド一覧取得
     public function getThreadList($gId) {
         $pdo = $this->dbConnect();
-        $sql = "SELECT room_name, detail FROM chat_room WHERE genre_id = ?";
+        $sql = "SELECT room_id, room_name, detail FROM chat_room WHERE genre_id = ?";
         
         $ps = $pdo->prepare($sql);
         $ps->bindValue(1, $gId, PDO::PARAM_STR);
