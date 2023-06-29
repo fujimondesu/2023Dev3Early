@@ -14,12 +14,14 @@ $userName = $dbmng->userNameGet($_SESSION['user_id']);
 $userName = $userName[0][0];
 $genreNames;
 $genreIds;
+$genreLength;
 $i = 0;
 foreach ($getGenres as $row) {
   $genreIds[$i] = $row['genre_id'];
   $genreNames[$i] = $row['genre_name'];
   $i++;
 }
+$genreLength = count($genreIds);
 ?>
 <!-- ホーム画面(最初ここ) -->
 <!doctype html>
@@ -174,19 +176,20 @@ foreach ($getGenres as $row) {
   </div>
 
 
-  <!-- <div style="display: flex; width: 100%; height: 80%;"> -->
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-3 col-xs-12" style="padding:0">
 
         <!-- ジャンル一覧 -->
         <div class="d-flex flex-column align-items-stretch bg-white">
-          <div style="background-color: aqua; height: 50px; display: flex; justify-content: center; align-items: center;">
-            <?php
-            // echo $userName;
-            echo $userName;
-            ?>
-            <a href="./new_topic.html">
+          <div style="background-color: aqua; height: 50px; display: flex; justify-content: space-between;">
+            <div style="width:80%; display: flex; justify-content: center; align-items: center;">
+              <?php
+              // echo $userName;
+              echo $userName;
+              ?>
+            </div>
+            <a href="./new_topic.html" style="width:20%;">
               <i class="bi bi-plus-lg icon-size"></i>
             </a>
           </div>
@@ -196,12 +199,12 @@ foreach ($getGenres as $row) {
             for ($i = 0; $i < count($genreNames); $i++) {
               // ニュースを選ばせた状態にするための処理
               $chk = '';
-              if($i <= 0) {
+              if ($i <= 0) {
                 $chk = 'checked';
               }
-              
-              echo '<div class="genres" onclick="clickGenre(' . $genreIds[$i] . ')">';
-              echo '<input type="radio"'. $chk .' name="genreButtons" id="' . $genreIds[$i] . '">';
+
+              echo '<div class="genres">';
+              echo '<input type="radio"' . $chk . ' name="genreButtons" id="' . $genreIds[$i] . '" onclick="isClicked(event,this,' . $genreIds[$i] . ')">';
               echo '<label for="' . $genreIds[$i] . '">';
               echo '<strong class="mb-1">' . $genreNames[$i] . '</strong>';
               echo '</label>';
@@ -215,9 +218,13 @@ foreach ($getGenres as $row) {
       <div class="col-sm-9 col-xs-12" style="height:90vh; padding:0">
 
         <!-- 話題一覧 -->
-        <div class="viewScroll" id="target">
+        <div class="viewScroll" id="thread">
 
-          <section>
+          <?php
+          // $getGenres = $dbmng->getThreadList();
+          ?>
+
+          <!-- <section>
             <article>
               <div class="info">
                 <h2><?php echo "ユーザー名"; ?></h2>
@@ -225,24 +232,84 @@ foreach ($getGenres as $row) {
               </div>
               <p><?php echo "本文"; ?></p>
             </article>
-          </section>
-          
+          </section> -->
+
         </div>
       </div>
     </div>
   </div>
-  <!-- </div> -->
 
 
   <script>
     // 選択された要素のcssを変える
-    function clickGenre(num) {
-      // classList.remove("genre-active");
-      // alert("このボタンのIDは" + num + "です。");
+    function isClicked(e, obj, num) {
+      e.stopPropagation();
       document.getElementById(num).classList.add("genre-active");
+
+      let thread_element = document.getElementById('thread');
+
+      // for(let i = 0; i < <?php echo $genreLength; ?>; i++) { 
+      //   // 新しいhtml要素を作成
+      //   let new_section = document.createElement('section');
+      //   let new_article = document.createElement('article');
+      //   let new_div = document.createElement('div');
+      //   div.classList.add("info");
+      //   let new_h2 = document.createElement('h2');
+      //   let new_time = document.createElement('time');
+      //   let new_p = document.createElement('p');
+
+      //   // 中身を追加
+      //   new_h2.textContent = '<?php echo "ユーザー名"; ?>';
+      //   new_time.textContent = '<?php echo date('Y年m月d日 H:i', strtotime("2019-03-20 23:22:47"));  ?>';
+      //   new_p.textContent = '<?php echo "本文"; ?>';
+      //   // htmlに追加
+      //   thread_element.appendChild(new_section);
+      //   new_section.appendChild(new_article);
+      //   new_article.appendChild(new_div);
+      //   new_div.appendChild(new_h2);
+      //   new_div.appendChild(new_time);
+      //   new_article.appendChild(new_p);
+      // }
+      // 新しいhtml要素を作成
+      let new_section = document.createElement('section');
+      let new_article = document.createElement('article');
+      let new_div = document.createElement('div');
+      div.classList.add("info");
+      let new_h2 = document.createElement('h2');
+      let new_time = document.createElement('time');
+      let new_p = document.createElement('p');
+
+      // 中身を追加
+      new_h2.textContent = '<?php echo "ユーザー名"; ?>';
+      new_time.textContent = '<?php echo date('Y年m月d日 H:i', strtotime("2019-03-20 23:22:47"));  ?>';
+      new_p.textContent = '<?php echo "本文"; ?>';
+      // htmlに追加
+      thread_element.appendChild(new_section);
+      new_section.appendChild(new_article);
+      new_article.appendChild(new_div);
+      new_div.appendChild(new_h2);
+      new_div.appendChild(new_time);
+      new_article.appendChild(new_p);
+
+
     }
 
-    // let divElement = document.getElementById("target");
+    // function clickGenre(num) {
+    //   // classList.remove("genre-active");
+    //   // alert("このボタンのIDは" + num + "です。");
+    //   document.getElementById(num).classList.add("genre-active");
+
+    //   let thread_element = document.getElementById('thread');
+
+    //   // 新しいHTML要素を作成
+    //   let new_element = document.createElement('p');
+    //   new_element.textContent = 'success';
+
+    //   // 指定した要素の中の末尾に挿入
+    //   thread_element.appendChild(new_element);
+    // }
+
+    // let divElement = document.getElementById("thread");
     // divElement.scrollTop = 1000;
   </script>
 
