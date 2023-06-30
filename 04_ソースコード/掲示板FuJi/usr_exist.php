@@ -12,6 +12,8 @@ if($user == "error"){
 }else{
     // セッションに「ユーザーid」を格納
     $_SESSION['user_id'] = $user;
+    $_SESSION['mail'] = $_POST['mail'];
+    $_SESSION['pass'] = $_POST['pass'];
     
     // 前のページに戻る
     header('Location: home.php');
