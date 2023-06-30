@@ -1,4 +1,12 @@
+<?php
+session_start();
+$_SESSION['mail'] = "aaa@gmail.com";
+$_SESSION['pass'] = "pass";
+$_SESSION['name'] = "name";
+?>
+
 <!-- ユーザー情報　確認 -->
+
 <!doctype html>
 <html lang="ja">
   <head>
@@ -19,7 +27,17 @@
       </div>
       <div class="col-3 header-R-parent">
         <a href="./home.php" class="header-R-child-on">home</a>
-      </div>
+        <!-- 「login」「logout」切り替え -->
+        <?php
+        if ($_SESSION['user_id'] == "0000000") {
+          echo '<div class="header-R-child-off">user</div>';
+          echo '<a href="./login.php" class="header-R-child-on">login</a>';
+        }else{
+          echo '<a href="./usr_inf.html" class="header-R-child-on">user</a>';
+          echo '<a href="./logout.php" class="header-R-child-on">logout</a>';
+        }
+        ?>
+        </div>
     </div>
   </div>
   
@@ -37,9 +55,9 @@
       <div class="row justify-content-center">
         <form action="./input_chk.php" method="post" class="border rounded bg-white col-lg-4 col-md-6 col-10 p-3">
           <h2 class="mt-3 mb-5" >ユーザー情報</h2>
-          <p>メールアドレス:monfuji0508@icloud.com</p>
-          <p>パスワード:＊＊＊＊＊＊</p>
-          <p>ユーザー名:フジモン</p>
+          <p>メールアドレス : <?php echo $_SESSION['mail'];?></p>
+          <p>パスワード: <?php echo $_SESSION['pass'];?></p>
+          <p>ユーザー名: <?php echo $_SESSION['name'];?></p>
         
           <div>
             <input type="submit" class="btn btn-primary rounded-pill my-4 px-5" value="ユーザー情報の変更" />
