@@ -30,7 +30,7 @@ session_start();
   </div>
 
   <!-- 戻るボタン -->
-  <div style="width: 80px;">
+  <!-- <div style="width: 80px;">
     <a href="
 
     <?php
@@ -41,9 +41,7 @@ session_start();
         
     " class="btn-back">＜戻る</a>
     
-    <!-- こんな処理 -->
-    <!--      <a href=" phpの処理 " class="btn-back">＜戻る</a>      -->
-  </div>
+  </div> -->
 
   <!-- 掲示板FuJi -->
   <h1 class="board">掲示板FuJi</h1>
