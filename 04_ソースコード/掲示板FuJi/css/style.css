@@ -59,16 +59,16 @@
 
 .header-R-child-on {
     text-decoration: none;
-    margin-right: 40px;
-    margin-left: 40px;
+    margin-right: 10%;
+    margin-left: 10%;
     margin-top: 9px;
     color: white;
 }
 
 .header-R-child-off {
     text-decoration: none;
-    margin-right: 40px;
-    margin-left: 40px;
+    margin-right: 10%;
+    margin-left: 10%;
     margin-top: 9px;
     color: #9A9A9A;
 }

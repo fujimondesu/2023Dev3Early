@@ -24,13 +24,13 @@ foreach ($getGenres as $row) {
   $i++;
 }
 
-if (!empty($_POST['genre_id'])) {
-  $_SESSION['genre_id'] = $_POST['genre_id'];
-  var_dump($_SESSION['genre_id']);
-}
+// if (!empty($_POST['genre_id'])) {
+//   $_SESSION['genre_id'] = $_POST['genre_id'];
+//   var_dump($_SESSION['genre_id']);
+// }
 
 // テスト用
-var_dump($_POST);
+// var_dump($_POST);
 ?>
 <!-- ホーム画面(最初ここ) -->
 <!doctype html>
@@ -194,12 +194,12 @@ var_dump($_POST);
 
   <div class="container-fluid">
     <div class="row">
-      <div class="col-sm-3 col-xs-12" style="padding:0">
+      <div class="col-sm-3 col-xs-12"  style="padding:0; background-color: #D9D9D9;">
 
         <!-- ジャンル一覧 -->
         <div class="d-flex flex-column align-items-stretch bg-white">
           <div style="background-color: aqua; height: 50px; display: flex; justify-content: space-between;">
-            <div style="width:80%; display: flex; justify-content: center; align-items: center;">
+            <div style="width:80%; display: flex; justify-content: center; align-items: center; font-size:20px;">
               <?php
               echo $userName;
               ?>
@@ -209,7 +209,7 @@ var_dump($_POST);
             </a>
           </div>
 
-          <div class="list-group list-group-flush border-bottom scrollarea" style="padding:0;">
+          <div class="list-group list-group-flush border-bottom scrollarea">
             <?php
             $id = 0;
             $name = '';
@@ -231,7 +231,7 @@ var_dump($_POST);
               echo '<div class="genres">';
               echo '<input type="radio"' . $chk . ' name="genreButtons" id="' . $id . '" value="' . $id . '" onclick="isClicked(event,this,' . $id . ')">';
               echo '<label for="' . $id . '">';
-              echo '<strong class="mb-1">' . $name . '</strong>';
+              echo '<strong class="mb-1" style="font-size:20px;">' . $name . '</strong>';
               echo '</label>';
               echo '</div>';
               $chk = '';
@@ -240,7 +240,7 @@ var_dump($_POST);
           </div>
         </div>
       </div>
-      <div class="col-sm-9 col-xs-12" style="height:90vh; padding:0">
+      <div class="col-sm-9 col-xs-12" style="height:92vh; padding:0">
 
         <!-- 話題一覧 -->
         <div class="viewScroll" id="thread">
@@ -362,8 +362,9 @@ var_dump($_POST);
         new_button.onclick = function() {
           goChat(arr_threadIds[i]);
         };
-        // new_button.style.textDecoration = 'none';
+        new_button.style.marginBottom = "75px";
         new_div.classList.add("info");
+        new_h2.style.fontSize = "30px";
         // 中身を追加
         new_h2.textContent = arr_threadNames[i];
         new_p.textContent = arr_threadDetails[i];
