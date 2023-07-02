@@ -5,7 +5,7 @@ $_SESSION['pass'] = "pass";
 $_SESSION['name'] = "name";
 ?>
 
-<!-- ユーザー情報　確認 -->
+<!-- ユーザー情報変更確認 -->
 
 <!doctype html>
 <html lang="ja">
@@ -27,16 +27,8 @@ $_SESSION['name'] = "name";
         </div>
         <div class="col-3 header-R-parent">
           <a href="./home.php" class="header-R-child-on">home</a>
-          <!-- 「login」「logout」切り替え -->
-          <?php
-          if ($_SESSION['user_id'] == "0000000") {
-            echo '<div class="header-R-child-off">user</div>';
-            echo '<a href="./login.php" class="header-R-child-on">login</a>';
-          }else{
-            echo '<a href="./usr_inf.html" class="header-R-child-on">user</a>';
-            echo '<a href="./logout.php" class="header-R-child-on">logout</a>';
-          }
-          ?>
+          <a href="./usr_inf.php" class="header-R-child-on">user</a>
+          <a href="./logout.php" class="header-R-child-on">logout</a> 
         </div>
     </div>
   </div>
@@ -54,17 +46,11 @@ $_SESSION['name'] = "name";
     <div class="container-fluid">
       <div class="row justify-content-center">
         <form action="./input_chk.php" method="post" class="border rounded bg-white col-lg-4 col-md-6 col-10 p-3">
-          <h2 class="mt-3 mb-5" >ユーザー情報</h2>
-          <p>メールアドレス : <?php echo $_SESSION['mail'];?></p>
+          <h2 class="mt-3 mb-5" >こちらの内容で間違いありませんか？</h2>
+          <!-- メールアドレス いるかも -->
           <p>パスワード: <?php echo $_SESSION['pass'];?></p>
           <p>ユーザー名: <?php echo $_SESSION['name'];?></p>
-        
-          <div>
-            <input type="submit" class="btn btn-primary rounded-pill my-4 px-5" value="ユーザー情報の変更" />
-          </div>
-          <div>
-            <input type="submit" class="btn btn-primary rounded-pill my-2 px-5" value="ホーム画面へ" />
-          </div>
+          <a href="./usr_inf.php"><button type="button" class="btn btn-primary rounded-pill my-4 px-5">ユーザー情報へ</button></a>
         </form>
       </div>
     </div>

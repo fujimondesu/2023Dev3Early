@@ -25,7 +25,7 @@
         </div>
         <div class="col-3 header-R-parent">
           <a href="./home.php" class="header-R-child-on">home</a>
-          <div class="header-R-child-off">user</div>
+          <a href="./usr_inf.php" class="header-R-child-on">user</a>
           <a href="./logout.php" class="header-R-child-on">logout</a>
         </div>
       </div>
@@ -56,8 +56,7 @@
           <div class="mb-3">
             <input type="text" class="form-control rounded-pill w-75 m-auto" name="pass" placeholder="確認用パスワード" />
           </div>
-          <!-- リンク home -->
-          <a href="./home.php"><button type="button" class="btn btn-primary rounded-pill my-4 px-5">確認に進む</button></a>
+          <a href="./usr_inf_chg_chk.php"><button type="button" class="btn btn-primary rounded-pill my-4 px-5">確認に進む</button></a>
         </form>
       </div>
     </div>
