@@ -10,27 +10,19 @@
     <link rel="stylesheet" href="./css/style.css">
   </head>
 
-  <!-- ヘッダー　-->
-  <div style="display: flex; width: 100%; height: 50px">
-    <a href="./home.html">
-      <img src="./img/rogo.png" width="100px" height="50px" alt="ロゴ" />
-    </a>
-
-    <div class="hedda-M"></div>
-
-    <div class="hedda-R">
-      
-      <ul
-        class="nav justify-content-end; ml-auto"
-        style="width: 100%; height: 100%"
-      >
-      <a class="nav-link" href="./home.html">home</a>
-      <a class="nav-link" href="./user_info_change_2.html">user</a>
-      <a class="nav-link" href="./logout.html">logout</a>
-      </ul>
+  <!-- ヘッダー -->
+  <div class="container-fluid" style="padding-left: 0">
+      <div class="row header-style">
+        <div class="col-9 header-L">
+          <img src="./img/logo.png" width="auto" height="100%" alt="logo" />
+        </div>
+        <div class="col-3 header-R-parent">
+          <a href="./home.php" class="header-R-child-on">home</a>
+          <div class="header-R-child-off">user</div>
+          <div class="header-R-child-off">logout</div>
+        </div>
     </div>
   </div>
-
   
   <body class="text-center" style="background-color: #f596aa;">
     <h1 class="my-5" style="color: #ffffff; font-family: cursive;">掲示板FuJi</h1>
@@ -38,8 +30,7 @@
         <div class="row justify-content-center">
             <form class="border rounded bg-white col-md-4 p-3">
                 アカウントを作成しました。
-                <button type="button" class="btn btn-primary rounded-pill my-4 px-5">ログイン画面へ</button>
-                
+                <a href="./login.php"><button type="button" class="btn btn-primary rounded-pill my-4 px-5">ログイン画面へ</button></a>
             </form>
         </div>
     </div>
