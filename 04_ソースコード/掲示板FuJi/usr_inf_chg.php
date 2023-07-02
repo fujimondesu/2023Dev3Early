@@ -1,3 +1,8 @@
+<!-- 確認に進むボタンのリンク home -->
+
+
+
+
 <!-- ユーザー情報変更 -->
 <!doctype html>
 <html lang="ja">
@@ -20,8 +25,8 @@
         </div>
         <div class="col-3 header-R-parent">
           <a href="./home.php" class="header-R-child-on">home</a>
-          <a href="./usr_inf.html" class="header-R-child-on">user</a>
-          <div class="header-R-child-off">logout</div>
+          <div class="header-R-child-off">user</div>
+          <a href="./logout.php" class="header-R-child-on">logout</a>
         </div>
       </div>
     </div>
@@ -39,18 +44,20 @@
     <div class="container-fluid">
       <div class="row justify-content-center">
         <form action="./input_chk.php" method="post" class="border rounded bg-white col-lg-4 col-md-6 col-10 p-3">
-          <h2 class="mt-3">ユーザー情報</h2>
-          <div>
-            <p>メールアドレス:monfuji0508@icloud.com</p>
-            <p>パスワード:＊＊＊＊＊＊</p>
-            <p>ユーザー名:フジモン</p>
+          <h2 class="mt-3">ユーザー情報変更</h2>
+          <p>ユーザー名変更</p>
+          <div class="mb-3">
+            <input type="text" class="form-control rounded-pill w-75 m-auto" name="name" placeholder="ユーザー名" />
           </div>
-          <div>
-            <input type="submit" class="btn btn-primary rounded-pill my-4 px-5" value="ユーザー情報" />
+          <p>パスワード変更</p>
+          <div class="mb-3">
+            <input type="text" class="form-control rounded-pill w-75 m-auto" name="pass" placeholder="パスワード" />
           </div>
-          <div>
-            <input type="submit" class="btn btn-primary rounded-pill my-1 px-5" value="ホーム画面へ" />
+          <div class="mb-3">
+            <input type="text" class="form-control rounded-pill w-75 m-auto" name="pass" placeholder="確認用パスワード" />
           </div>
+          <!-- リンク home -->
+          <a href="./home.php"><button type="button" class="btn btn-primary rounded-pill my-4 px-5">確認に進む</button></a>
         </form>
       </div>
     </div>
