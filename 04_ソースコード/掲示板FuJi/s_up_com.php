@@ -10,8 +10,9 @@
     <link rel="stylesheet" href="./css/style.css">
   </head>
 
-  <!-- ヘッダー -->
-  <div class="container-fluid" style="padding-left: 0">
+  <body class="text-center" style="background-color: #f596aa;">
+    <!-- ヘッダー -->
+    <div class="container-fluid" style="padding-left: 0">
       <div class="row header-style">
         <div class="col-9 header-L">
           <img src="./img/logo.png" width="auto" height="100%" alt="logo" />
@@ -22,17 +23,21 @@
           <div class="header-R-child-off">logout</div>
         </div>
     </div>
-  </div>
   
-  <body class="text-center" style="background-color: #f596aa;">
+    <!-- 戻るボタン -->
+    <div style="width: 80px;">
+      <a href="#" class="btn-back">＜戻る</a>
+    </div>
+    
+    <!-- フォーム -->
     <h1 class="my-5" style="color: #ffffff; font-family: cursive;">掲示板FuJi</h1>
     <div class="container text-center">
-        <div class="row justify-content-center">
-            <form class="border rounded bg-white col-md-4 p-3">
-                アカウントを作成しました。
-                <a href="./login.php"><button type="button" class="btn btn-primary rounded-pill my-4 px-5">ログイン画面へ</button></a>
-            </form>
-        </div>
+      <div class="row justify-content-center">
+        <form class="border rounded bg-white col-md-4 p-3">
+          アカウントを作成しました。
+          <a href="./login.php"><button type="button" class="btn btn-primary rounded-pill my-4 px-5">ログイン画面へ</button></a>
+        </form>
+      </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
   </body>
