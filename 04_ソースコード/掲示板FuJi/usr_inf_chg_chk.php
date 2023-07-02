@@ -21,22 +21,22 @@ $_SESSION['name'] = "name";
   <body class="text-center">
     <!-- ヘッダー -->
     <div class="container-fluid" style="padding-left: 0">
-    <div class="row header-style">
-      <div class="col-9 header-L">
-        <img src="./img/logo.png" width="auto" height="100%" alt="logo" />
-      </div>
-      <div class="col-3 header-R-parent">
-        <a href="./home.php" class="header-R-child-on">home</a>
-        <!-- 「login」「logout」切り替え -->
-        <?php
-        if ($_SESSION['user_id'] == "0000000") {
-          echo '<div class="header-R-child-off">user</div>';
-          echo '<a href="./login.php" class="header-R-child-on">login</a>';
-        }else{
-          echo '<a href="./usr_inf.html" class="header-R-child-on">user</a>';
-          echo '<a href="./logout.php" class="header-R-child-on">logout</a>';
-        }
-        ?>
+      <div class="row header-style">
+        <div class="col-9 header-L">
+          <img src="./img/logo.png" width="auto" height="100%" alt="logo" />
+        </div>
+        <div class="col-3 header-R-parent">
+          <a href="./home.php" class="header-R-child-on">home</a>
+          <!-- 「login」「logout」切り替え -->
+          <?php
+          if ($_SESSION['user_id'] == "0000000") {
+            echo '<div class="header-R-child-off">user</div>';
+            echo '<a href="./login.php" class="header-R-child-on">login</a>';
+          }else{
+            echo '<a href="./usr_inf.html" class="header-R-child-on">user</a>';
+            echo '<a href="./logout.php" class="header-R-child-on">logout</a>';
+          }
+          ?>
         </div>
     </div>
   </div>
