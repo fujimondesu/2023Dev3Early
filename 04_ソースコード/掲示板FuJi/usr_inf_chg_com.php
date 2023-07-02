@@ -1,4 +1,4 @@
-<!-- ユーザー情報変更完了しました -->
+<!-- ユーザー情報変更完了 -->
 <!doctype html>
 <html lang="ja">
   <head>
@@ -12,16 +12,15 @@
 
   <body class="text-center">
     <!-- ヘッダー -->
-    <div class="container-fluid" style="padding-left: 0">
-      <div class="row header-style">
-        <div class="col-9 header-L">
-          <img src="./img/logo.png" width="auto" height="100%" alt="logo" />
-        </div>
-        <div class="col-3 header-R-parent">
-          <a href="./home.php" class="header-R-child-on">home</a>
-          <div class="header-R-child-off">user</div>
-          <div class="header-R-child-off">logout</div>
-        </div>
+  <div class="container-fluid" style="padding-left: 0">
+    <div class="row header-style">
+      <div class="col-9 header-L">
+        <img src="./img/logo.png" width="auto" height="100%" alt="logo" />
+      </div>
+      <div class="col-3 header-R-parent">
+        <a href="./home.php" class="header-R-child-on">home</a>
+        <a href="./usr_inf.php" class="header-R-child-on">user</a>
+        <div class="header-R-child-off">logout</div>
       </div>
     </div>
   
@@ -41,9 +40,7 @@
       <div class="row justify-content-center">
         <form action="./input_chk.php" method="post" class="border rounded bg-white col-lg-4 col-md-6 col-10 p-3">
           <h2 class="mt-3">ユーザー情報を変更しました。</h2>
-          <div>
-            <input type="submit" class="btn btn-primary rounded-pill my-4 px-5" value="ログイン" />
-          </div>
+          <a href="./usr_inf.php"><button type="button" class="btn btn-primary rounded-pill my-4 px-5">完了</button></a>
         </form>
       </div>
     </div>
