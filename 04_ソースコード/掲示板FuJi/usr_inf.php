@@ -1,3 +1,12 @@
+<!-- テスト用 -->
+<?php
+session_start();
+$_SESSION['mail'] = "aaa@gmail.com";
+$_SESSION['pass'] = "pass";
+$_SESSION['name'] = "name";
+?>
+
+
 <!-- ユーザー情報 -->
 <!doctype html>
 <html lang="ja">
@@ -13,15 +22,22 @@
   <body class="text-center">
     <!-- ヘッダー -->
     <div class="container-fluid" style="padding-left: 0">
-    <div class="row header-style">
-      <div class="col-9 header-L">
-        <img src="./img/logo.png" width="auto" height="100%" alt="logo" />
-      </div>
-      <div class="col-3 header-R-parent">
-        <a href="./home.php" class="header-R-child-on">home</a>
-        <a href="./login.php" class="header-R-child-on">login</a>
-        <a href="./usr_inf.html" class="header-R-child-on">user</a>
-      </div>
+      <div class="row header-style">
+        <div class="col-9 header-L">
+          <img src="./img/logo.png" width="auto" height="100%" alt="logo" />
+        </div>
+        <div class="col-3 header-R-parent">
+          <a href="./home.php" class="header-R-child-on">home</a>
+          <div class="header-R-child-off">user</div>
+          <!-- 「login」「logout」切り替え -->
+          <?php
+          if ($_SESSION['user_id'] == "0000000") {
+            echo '<a href="./login.php" class="header-R-child-on">login</a>';
+          }else{
+            echo '<a href="./logout.php" class="header-R-child-on">logout</a>';
+          }
+          ?>
+        </div>
     </div>
   </div>
   
@@ -38,14 +54,14 @@
       <div class="row justify-content-center">
         <form action="./input_chk.php" method="post" class="border rounded bg-white col-lg-4 col-md-6 col-10 p-3">
           <h2 class="mt-3 mb-5" >ユーザー情報</h2>
-          <div class="mb-3">メールアドレス:</div>
-          <div class="mb-3">パスワード:</div>
-          <div class="mb-3"> ユーザー名:</div>
+          <div class="mb-3">メールアドレス : <?php echo $_SESSION['mail'];?></div>
+          <div class="mb-3">パスワード : <?php echo $_SESSION['pass'];?></div>
+          <div class="mb-3"> ユーザー名 : <?php echo $_SESSION['name'];?></div>
           <div>
-            <input type="submit" class="btn btn-primary rounded-pill my-4 px-5" value="ユーザー情報の変更" />
+          <a href="./usr_inf_chg.php"><button type="button" class="btn btn-primary rounded-pill my-4 px-5">ユーザー情報の変更</button></a>
           </div>
           <div>
-            <input type="submit" class="btn btn-primary rounded-pill my-4 px-5" value="ホーム画面へ" />
+          <a href="./home.php"><button type="button" class="btn btn-primary rounded-pill my-4 px-5">ホーム画面へ</button></a>
           </div>
         </form>
       </div>
