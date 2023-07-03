@@ -206,7 +206,7 @@ foreach ($getGenres as $row) {
               echo $userName;
               ?>
             </div>
-            <a href="./new_thread_create.php" style="width:20%;display: table;">
+            <a href="./new_thread.php" style="width:20%;display: table;">
               <i class="bi bi-plus-lg icon-size" style="display: table-cell;vertical-align: middle;"></i>
             </a>
           </div>
