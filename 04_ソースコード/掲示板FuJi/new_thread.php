@@ -34,7 +34,7 @@ session_start();
 
     <!-- 戻るボタン -->
     <div style="width: 80px;">
-      <a href="#" class="btn-back">＜戻る</a>
+      <a href="#" class="btn-back" onclick="window.history.back(); return false;">＜戻る</a>
     </div>
     
     <!-- フォーム -->
