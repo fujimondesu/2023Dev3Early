@@ -45,13 +45,15 @@
           </div>
           <div class="mt-4">
             ジャンル選択をしてください
-          <select name="example">
-            <option value="その他">その他</option>
-            <option value="ニュース">ニュース</option>
-            <option value="ゲーム">ゲーム</option>
-            <option value="スポーツ">スポーツ</option>
-            <option value="アニメ">アニメ</option>
-          </select>
+            <label class="selectbox">
+              <select>
+                <option>その他</option>
+                <option>ニュース</option>
+                <option>ゲーム</option>
+                <option>スポーツ</option>
+                <option>アニメ</option>
+              </select>
+            </label>
           </div>
           <div>
             <a href="./chat.php"><button type="button" class="btn btn-primary rounded-pill my-4 px-5">新規作成</button></a>
