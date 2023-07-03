@@ -2,7 +2,11 @@
 session_start();
 $_SESSION['error'] = "";
 $_SESSION['page'] = "home.php";
-// session_destroy();
+if (!empty($_POST['genre_id'])) {
+  $_SESSION['genre_id'] = $_POST['genre_id'];
+}else{
+  $_SESSION['genre_id'] = "1";
+}
 // 初回、セッションに「user_id」が無ければ、「0000000」で上書きし、ゲストモードにする
 if (empty($_SESSION['user_id'])) {
   $_SESSION['user_id'] = "0000000";
@@ -11,10 +15,10 @@ require_once './DBManager.php';
 $dbmng = new DBManager();
 // ジャンル一覧取得
 $getGenres = $dbmng->getGenre();
+// ユーザー名取得
 $userName = $dbmng->userNameGet($_SESSION['user_id']);
-$userName = $userName[0][0];
-$genreNames;
 $genreIds;
+$genreNames;
 $threadIds;
 $threadNames;
 $threadDetails;
@@ -44,126 +48,6 @@ foreach ($getGenres as $row) {
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
   <link rel="stylesheet" href="./css/style.css">
   <style>
-    /* article,
-    h2,
-    time,
-    p */
-    .transp {
-      margin: 0;
-      padding: 0;
-      border: 0;
-      outline: 0;
-      font-size: 100%;
-      vertical-align: baseline;
-      background: transparent;
-    }
-
-    section {
-      margin-left: 5%;
-      margin-right: 5%;
-      padding: 0;
-      border: 0;
-      outline: 0;
-      font-size: 100%;
-      vertical-align: baseline;
-      background: transparent;
-    }
-
-    article,
-    section {
-      height: 200px;
-      display: block;
-    }
-
-    article {
-      margin-top: 20px;
-      padding: 20px;
-      border-radius: 10px;
-      background: #fff;
-    }
-
-    article.reply {
-      position: relative;
-      margin-top: 15px;
-      margin-left: 30px;
-    }
-
-    article.reply::before {
-      position: absolute;
-      top: -10px;
-      left: 20px;
-      display: block;
-      content: "";
-      border-top: none;
-      border-left: 7px solid #f7f7f7;
-      border-right: 7px solid #f7f7f7;
-      border-bottom: 10px solid #fff;
-    }
-
-    /* button */
-    .transpB {
-      position: relative;
-      background: transparent;
-      border-color: transparent transparent transparent transparent;
-      width: 100%;
-      height: 30%;
-    }
-
-    .info {
-      margin-bottom: 10px;
-      text-align: left;
-    }
-
-    .info h2 {
-      display: inline-block;
-      margin-right: 10px;
-      color: #222;
-      line-height: 1.6em;
-      font-size: 100%;
-    }
-
-    .info time {
-      color: #999;
-      line-height: 1.6em;
-      font-size: 72%;
-    }
-
-    article p {
-      color: #555;
-      text-align: left;
-      font-size: 100%;
-      line-height: 1.6em;
-    }
-
-    .viewScroll {
-      width: 100%;
-      height: 100%;
-      overflow-y: scroll;
-    }
-
-    .genres label {
-      display: block;
-      /* width: 150px; */
-      background: white;
-      color: #000;
-      padding: 10px;
-      /* margin: 10px; */
-      box-sizing: border-box;
-      text-align: center;
-      text-decoration: none;
-      cursor: pointer;
-      border: 1px solid;
-      border-color: transparent transparent rgb(188, 188, 188) transparent;
-    }
-
-    .genres input:checked+label {
-      background: #D4FFFC;
-      color: black;
-    }
-
-    .genres input {
-      display: none;
-    }
   </style>
 </head>
 
@@ -195,8 +79,8 @@ foreach ($getGenres as $row) {
 
 
   <div class="container-fluid">
-    <div class="row">
-      <div class="col-sm-3 col-xs-12"  style="padding:0; background-color: #D9D9D9;">
+    <div class="row"  style="height: 94vh;">
+      <div class="col-sm-3 col-xs-12" style="padding:0; background-color: #D9D9D9;">
 
         <!-- ジャンル一覧 -->
         <div class="d-flex flex-column align-items-stretch bg-white">
@@ -242,7 +126,7 @@ foreach ($getGenres as $row) {
           </div>
         </div>
       </div>
-      <div class="col-sm-9 col-xs-12" style="height:92vh; padding:0">
+      <div class="col-sm-9 col-xs-12" style="height:94vh; padding:0">
 
         <!-- 話題一覧 -->
         <div class="viewScroll" id="thread">

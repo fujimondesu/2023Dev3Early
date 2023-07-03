@@ -4,167 +4,281 @@
 <link rel="stylesheet" href="./css/style.css">
 */
 
-.page {                                        /*ページのサイズと背景色*/
-    width: 100%;
-    height: 100%;
-    background-color: #f596aa;
-    
+.page {
+  /*ページのサイズと背景色*/
+  width: 100%;
+  height: 100%;
+  background-color: #f596aa;
 }
 
-.hedda-N {                                               /*ヘッダーのグレーアウト*/
-    color: #797979;
-    position: absolute;
-    top: 10px;
+.hedda-N {
+  /*ヘッダーのグレーアウト*/
+  color: #797979;
+  position: absolute;
+  top: 10px;
 }
-
 
 /*------------------
     ヘッダー
 --------------------*/
 
-
-
-.hedda-M {                                                /*ヘッダー*/
-    background-color: pink;
-    width: 80%;
-    height: 100%;
+.hedda-M {
+  /*ヘッダー*/
+  background-color: pink;
+  width: 80%;
+  height: 100%;
 }
 
-.hedda-R {                                              /*ヘッダーの右上*/
-    background-color: pink;
-    width: 20%;
+.hedda-R {
+  /*ヘッダーの右上*/
+  background-color: pink;
+  width: 20%;
 }
 
-.nav-item {                                             /* 右上のリンク */
-    width: 30%;
-    height: 100%;
+.nav-item {
+  /* 右上のリンク */
+  width: 30%;
+  height: 100%;
 }
-
-
 
 .header-style {
-    background-color: pink;
-    height: 50px;
+  background-color: pink;
+  height: 55px;
 }
 
 .header-L {
-    height: 100%;
-    text-align: left;
+  height: 100%;
+  text-align: left;
 }
 
 .header-R-parent {
-    display: flex;
-    justify-content: flex-end;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .header-R-child-on {
-    text-decoration: none;
-    margin-right: 10%;
-    margin-left: 10%;
-    margin-top: 9px;
-    color: white;
+  text-decoration: none;
+  margin-right: 10%;
+  margin-left: 10%;
+  margin-top: 9px;
+  color: white;
 }
 
 .header-R-child-off {
-    text-decoration: none;
-    margin-right: 10%;
-    margin-left: 10%;
-    margin-top: 9px;
-    color: #9A9A9A;
+  text-decoration: none;
+  margin-right: 10%;
+  margin-left: 10%;
+  margin-top: 9px;
+  color: #9a9a9a;
 }
-
-
 
 /*------------------
     戻るボタン
 --------------------*/
 
 .btn-back {
-    display: flex;
-    justify-content: flex-start;
-    margin-top: 10px;
-    margin-left: 15px;
-    color: white;
-    text-decoration: none;
-    font-size: 120%;
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 10px;
+  margin-left: 15px;
+  color: white;
+  text-decoration: none;
+  font-size: 120%;
 }
 
-
-
-
-
 /*背景色*/
-.text-center{
-    background-color: #f596aa;
+.text-center {
+  background-color: #f596aa;
 }
 
 /*リンクのホバー  ホームの＋*/
 a:hover {
-    color: red;
+  color: red;
 }
 
 .icon-size {
-    font-size:2em;
+  font-size: 2em;
 }
 
 /*ログインなどの背景*/
 .back {
-    background-color: #ffffff;
+  background-color: #ffffff;
 }
 
 /*話題*/
 .topic {
-    text-align: center;
+  text-align: center;
 }
 
 .topic p {
-    margin: 0; 
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
-
 
 /* 掲示板Fuji */
 .board {
-    font-family: cursive;
-    margin-bottom: 20px;
-    color: white;
+  font-family: cursive;
+  margin-bottom: 20px;
+  color: white;
 }
-
 
 /*------------------
     エラー表示
 --------------------*/
 .error {
-    color: red;
+  color: red;
 }
 
 /* セレクトボックス*/
 .selectbox {
-    display: inline-flex;
-    align-items: center;
-    position: relative;
+  display: inline-flex;
+  align-items: center;
+  position: relative;
 }
 
 .selectbox::after {
-    position: absolute;
-    right: 15px;
-    width: 10px;
-    height: 7px;
-    background-color: #202020;
-    clip-path: polygon(0 0, 100% 0, 50% 100%);
-    content: '';
-    pointer-events: none;
+  position: absolute;
+  right: 15px;
+  width: 10px;
+  height: 7px;
+  background-color: #202020;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  content: "";
+  pointer-events: none;
 }
 
 .selectbox select {
-    appearance: none;
-    min-width: 230px;
-    height: 2.8em;
-    padding: .4em calc(.8em + 30px) .4em .8em;
-    border: 1px solid #000000;
-    border-radius: 3px;
-    background-color: #fff;
-    color: #000000;
-    font-size: 1em;
-    cursor: pointer;
+  appearance: none;
+  min-width: 230px;
+  height: 2.8em;
+  padding: 0.4em calc(0.8em + 30px) 0.4em 0.8em;
+  border: 1px solid #000000;
+  border-radius: 3px;
+  background-color: #fff;
+  color: #000000;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+/* home画面css全て */
+
+/* article,
+    h2,
+    time,
+    p */
+.transp {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+section {
+  margin-left: 5%;
+  margin-right: 5%;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+article,
+section {
+  height: 200px;
+  display: block;
+}
+
+article {
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  background: #fff;
+}
+
+article.reply {
+  position: relative;
+  margin-top: 15px;
+  margin-left: 30px;
+}
+
+article.reply::before {
+  position: absolute;
+  top: -10px;
+  left: 20px;
+  display: block;
+  content: "";
+  border-top: none;
+  border-left: 7px solid #f7f7f7;
+  border-right: 7px solid #f7f7f7;
+  border-bottom: 10px solid #fff;
+}
+
+/* button */
+.transpB {
+  position: relative;
+  background: transparent;
+  border-color: transparent transparent transparent transparent;
+  width: 100%;
+  height: 30%;
+}
+
+.info {
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.info h2 {
+  display: inline-block;
+  margin-right: 10px;
+  color: #222;
+  line-height: 1.6em;
+  font-size: 100%;
+}
+
+.info time {
+  color: #999;
+  line-height: 1.6em;
+  font-size: 72%;
+}
+
+article p {
+  color: #555;
+  text-align: left;
+  font-size: 100%;
+  line-height: 1.6em;
+}
+
+.viewScroll {
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+}
+
+.genres label {
+  display: block;
+  /* width: 150px; */
+  background: white;
+  color: #000;
+  padding: 10px;
+  /* margin: 10px; */
+  box-sizing: border-box;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid;
+  border-color: transparent transparent rgb(188, 188, 188) transparent;
+}
+
+.genres input:checked + label {
+  background: #d4fffc;
+  color: black;
+}
+
+.genres input {
+  display: none;
 }
