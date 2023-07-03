@@ -125,12 +125,13 @@ class DBManager
     public function userNameGet($uId) {
         $pdo = $this->dbConnect();
         $sql = "SELECT user_name FROM user WHERE user_id = ?";
-
+        
         $ps = $pdo->prepare($sql);
         $ps->bindValue(1, $uId, PDO::PARAM_STR);
         $ps->execute();
         $result = $ps->fetchAll();
-        return $result;
+        // $resultが二次元配列になってるから[0][0]を付けてる
+        return $result[0][0];
     }
 
     // ユーザーのパスワードを更新
@@ -204,8 +205,8 @@ class DBManager
         $ps->bindValue(3, $rName, PDO::PARAM_STR);
         $ps->bindValue(4, $detail, PDO::PARAM_STR);
         $ps->execute();
-        $result = $ps->fetchAll();
         return $maxId;
+        // $result = $ps->fetchAll();
         // return $result;
     }
     
@@ -235,7 +236,7 @@ class DBManager
     // 選択したスレッドのチャット一覧取得(ユーザー名、チャット本文、時間)
     public function getChatList($rId) {
         $pdo = $this->dbConnect();
-        $sql = "SELECT user.user_name, chat_msg.chat_main, 
+        $sql = "SELECT user.user_name, chat_msg.msg_id, chat_msg.chat_main, 
         DATE_FORMAT(sent_time, '%Y年%m月%d日 %k:%i') FROM chat_msg 
         INNER JOIN user ON  chat_msg.user_id = user.user_id 
         WHERE room_id = ?";
@@ -245,6 +246,18 @@ class DBManager
         $ps->execute();
         $result = $ps->fetchAll();
         return $result;
+    }
+
+    // 選択したチャットの名前を取得
+    public function getRoomName($rId) {
+        $pdo = $this->dbConnect();
+        $sql = "SELECT room_name FROM chat_room WHERE room_id = ?";
+        
+        $ps = $pdo->prepare($sql);
+        $ps->bindValue(1, $rId, PDO::PARAM_STR);
+        $ps->execute();
+        $result = $ps->fetchAll();
+        return $result[0][0];
     }
 
     // 一番最後のuser_idを取得
@@ -291,15 +304,5 @@ class DBManager
         $replace = sprintf('%07d', $num);
         return $replace;
     }
-
-    // フォーマットを指定して時間を取得（分まで）
-    // public function getTime() {
-        //     // YYYY年MM月DD日 hh:mm
-        //     $date = date('Y') . "年" . date('n') . "月" . date('j') . "日　" . date('H') . ":" . date('i');
-        //     return $date;
-    // }
-
-
-    // --------------------------------ここまで書いた------------------------------------
 }
 ?>
