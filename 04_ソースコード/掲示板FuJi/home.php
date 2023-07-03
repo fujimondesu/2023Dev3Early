@@ -44,10 +44,11 @@ foreach ($getGenres as $row) {
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
   <link rel="stylesheet" href="./css/style.css">
   <style>
-    article,
+    /* article,
     h2,
     time,
-    p {
+    p */
+    .transp {
       margin: 0;
       padding: 0;
       border: 0;
@@ -99,7 +100,8 @@ foreach ($getGenres as $row) {
       border-bottom: 10px solid #fff;
     }
 
-    button {
+    /* button */
+    .transpB {
       position: relative;
       background: transparent;
       border-color: transparent transparent transparent transparent;
@@ -363,7 +365,11 @@ foreach ($getGenres as $row) {
           goChat(arr_threadIds[i]);
         };
         new_button.style.marginBottom = "75px";
+        new_button.classList.add("transpB");
         new_div.classList.add("info");
+        // new_article.classList.add("transp");
+        new_h2.classList.add("transp");
+        new_p.classList.add("transp");
         new_h2.style.fontSize = "30px";
         // 中身を追加
         new_h2.textContent = arr_threadNames[i];
