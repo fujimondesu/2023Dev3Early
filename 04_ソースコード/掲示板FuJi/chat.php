@@ -1,7 +1,48 @@
 <?php
 session_start();
-var_dump($_POST);
-// var_dump($_SESSION['room_id']);
+$_SESSION['error'] = "";
+$_SESSION['page'] = "chat.php";
+// (念のため)初回、セッションに「user_id」が無ければ、「0000000」で上書きし、ゲストモードにする
+if (empty($_SESSION['user_id'])) {
+  $_SESSION['user_id'] = "0000000";
+}
+if (!empty($_POST['room_id'])) {
+  $_SESSION['room_id'] = $_POST['room_id'];
+}
+require_once './DBManager.php';
+$dbmng = new DBManager();
+// スレッド一覧取得
+$getThreads = $dbmng->getThreadList($_SESSION['genre_id']);
+// スレッド名取得
+$roomName = $dbmng->getRoomName($_POST['room_id']);
+// ユーザー名取得
+$userName = $dbmng->userNameGet($_SESSION['user_id']);
+// 選択したスレッドのチャット一覧取得
+$chats = $dbmng->getChatList($_POST['room_id']);
+// 「room_id」を数字に変換
+$viewFlgPhp;
+$threadIds;
+$threadNames;
+$chatIds;
+$chatNames;
+$chatTimes;
+$chatText;
+$i = 0;
+foreach ($getThreads as $row) {
+  $threadIds[$i] = $row['room_id'];
+  $threadNames[$i] = $row['room_name'];
+  $i++;
+}
+
+if (!empty($chats)) {
+  $viewFlgPhp = true;
+}else{
+  $viewFlgPhp = false;
+}
+
+// テスト用
+// var_dump($_POST['room_id']);
+// var_dump($chats);
 ?>
 <!-- チャット画面 -->
 <!doctype html>
@@ -16,58 +57,201 @@ var_dump($_POST);
   <link rel="stylesheet" href="./css/style.css">
 </head>
 
-<body>
-  <div style="width: 100%; height: 1000px;">
-
-    <!-- ヘッダー　-->
-    <div class="container-fluid" style="padding-left: 0">
-      <div class="row header-style">
-        <div class="col-9 header-L">
-          <img src="./img/logo.png" width="auto" height="100%" alt="logo" />
-        </div>
-        <div class="col-3 header-R-parent">
-          <a href="./home.php" class="header-R-child-on">home</a>
-          <a href="./usr_inf.html" class="header-R-child-on">user</a>
-
-          <!-- 「login」「logout」切り替え -->
-          <?php
-          $link = "login";
-          if ($_SESSION['user_id'] == "0000000") {
-            $link = "logout";
-          }
-          echo '<a href="' . $link . '.php" class="header-R-child-on">' . $link . '</a>';
-          ?>
-
-          <!-- <a href="./logout.php" class="header-R-child-off">logout</a> -->
-        </div>
+<body class="text-center">
+  <!-- ヘッダー -->
+  <div class="container-fluid" style="padding-left: 0">
+    <div class="row header-style">
+      <div class="col-9 header-L">
+        <img src="./img/logo.png" width="auto" height="100%" alt="logo" />
       </div>
-    </div>
+      <div class="col-3 header-R-parent">
+        <a href="./home.php" class="header-R-child-on">home</a>
 
-    <!-- 　-->
-    <div style="display: flex; width: 100%; height: 50px;">
-      <div style="background-color: aqua; width: 20%; height: 100%; line-height: 50px;">
-        ユーザー名
-        <a href="./new_topic.html"><i class="bi bi-plus"></i></a>
+        <!-- 「login」「logout」切り替え -->
+        <?php
+        if ($_SESSION['user_id'] == "0000000") {
+          echo '<div class="header-R-child-off">user</div>';
+          echo '<a href="./login.php" class="header-R-child-on">login</a>';
+        } else {
+          echo '<a href="./usr_inf.html" class="header-R-child-on">user</a>';
+          echo '<a href="./logout.php" class="header-R-child-on">logout</a>';
+        }
+        ?>
+
       </div>
-      <div style="width: 80%; height: 100%; text-align: center;">雑談</div>
-    </div>
-    <div style="display: flex; width: 100%; height: 80%;">
-      <div style="flex-flow: column;">
-        <div class="topic" style="width: 100%;">
-          <p>掲示板FuJiの使い方1</p>
-        </div>
-        <div class="topic" style="width: 100%;">
-          <p>掲示板FuJiの使い方2</p>
-        </div>
-      </div>
-      <!-- コンテンツ　-->
-      <div style="background-color: chartreuse; width: 80%; height: 100%;">コンテンツ</div>
-    </div>
-    <!-- フッター -->
-    <div style="display: flex; width: 100%; height: 10%;">
-      <div style="background-color: pink; width: 100%; height: 100%;">フッター</div>
     </div>
   </div>
+
+
+  <div class="container-fluid">
+    <div class="row" style="height: 94vh;">
+      <div class="col-sm-3 col-xs-12" style="padding:0; background-color: #D9D9D9;">
+
+        <!-- ジャンル一覧 -->
+        <div class="d-flex flex-column align-items-stretch bg-white">
+          <div style="background-color: aqua; height: 50px; display: flex; justify-content: space-between;">
+            <div style="width:80%; display: flex; justify-content: center; align-items: center; font-size:20px;">
+              <?php
+              echo $userName;
+              ?>
+            </div>
+            <a href="./new_thread.php" style="width:20%;display: table;">
+              <i class="bi bi-plus-lg icon-size" style="display: table-cell;vertical-align: middle;"></i>
+            </a>
+          </div>
+
+          <div class="list-group list-group-flush border-bottom scrollarea">
+            <?php
+            $id = '';
+            $name = '';
+            for ($i = 0; $i < count($threadNames); $i++) {
+              $chk = '';
+              // ジャンルを選んでいたか
+              if ($threadIds[$i] == $_POST['room_id']) {
+                $chk = 'checked';
+              }
+              $id = $threadIds[$i];
+              $name = $threadNames[$i];
+
+              echo '<div class="genres">';
+              echo '<input type="radio"' . $chk . ' name="genreButtons" id="' . $id . '" value="' . $id . '" onclick="isClicked(event,this,\'' . $id . '\')">';
+              echo '<label for="' . $id . '">';
+              echo '<strong class="mb-1" style="font-size:20px;">' . $name . '</strong>';
+              echo '</label>';
+              echo '</div>';
+              $chk = '';
+            }
+            ?>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-9 col-xs-12" style="height:89vh; padding:0;">
+
+        <!-- 選んだスレッドの名前を表示 -->
+        <div style="background-color:white; height: 50px; display: grid;place-items: center; font-size:20px;">
+          <div>
+            <?php
+            echo $roomName;
+            ?>
+          </div>
+        </div>
+
+        <!-- 話題一覧 -->
+        <div class="viewScroll" id="thread">
+
+          <!-- ここにスレッドが入る -->
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+    // 最初に画面を表示したときにスレッドを描画する処理
+    first_output();
+
+    // ニ回目にスレッドを描画する処理
+    function isClicked(e, obj, num) {
+      // 選択したジャンルの「room_id」を「POST」でこの画面に送信
+      sendPost("", "room_id", num);
+      
+      // output(num);
+      
+      console.log("a");
+      <?php
+      if ($viewFlgPhp == true) {
+        echo "output(\"". $_POST['room_id'] ."\");";
+      }
+      ?>
+    }
+
+    // formの処理
+    function sendPost(act, name, num) {
+      let form = document.createElement('form');
+      let request = document.createElement('input');
+      form.method = 'POST';
+      form.action = act;
+      request.type = 'hidden';
+      request.name = name;
+      request.value = num;
+      form.appendChild(request);
+      document.body.appendChild(form);
+      form.submit();
+    }
+
+    // 最初に画面を表示したときにスレッドを描画する処理
+    function first_output() {
+        <?php
+        if ($viewFlgPhp == true) {
+          echo "output(\"" . $_POST['room_id'] . "\");";
+        }
+        ?>
+    }
+
+    // スレッドを描画する処理（numは最初の描画に必要）
+    function output(num) {
+      <?php
+      if ($viewFlgPhp == true) {
+        // 「room_id」からチャット一覧を取得
+        // データベースから対応するスレッド一覧を取得し、json形式に変換
+        $i = 0;
+        foreach ($chats as $row) {
+          $chatIds[$i] = $row['msg_id'];
+          $chatNames[$i] = $row['user_name'];
+          $chatTimes[$i] = $row["DATE_FORMAT(sent_time, '%Y年%m月%d日 %k:%i')"];
+          $chatText[$i] = $row['chat_main'];
+          $i++;
+        }
+        $js_chatIds = json_encode($chatIds);
+        $js_chatNames = json_encode($chatNames);
+        $js_chatTimes = json_encode($chatTimes);
+        $js_chatText = json_encode($chatText);
+      }
+      ?>;
+        // 配列をphp→jsに代入
+        let arr_chatIds<?php if ($viewFlgPhp == true) {echo " = " . $js_chatIds;} ?>;
+        let arr_chatNames<?php if ($viewFlgPhp == true) {echo " = " . $js_chatNames;} ?>;
+        let arr_chatTimes<?php if ($viewFlgPhp == true) {echo " = " . $js_chatTimes;} ?>;
+        let arr_chatText<?php if ($viewFlgPhp == true) {echo " = " . $js_chatText;} ?>;
+        // 選択された要素のcssを変える
+        document.getElementById(num).classList.add("genre-active");
+        // スレッドを挿入するタグの「id」を取得
+        let thread_element = document.getElementById('thread');
+        // スレッド一覧を画面から削除する
+        while (thread_element.lastChild) {
+          thread_element.removeChild(thread_element.lastChild);
+        }
+        // ジャンル数を取得
+        let len = arr_chatNames.length;
+        for (let i = 0; i < len; i++) {
+          // 新しいhtml要素を作成
+          // let new_button = document.createElement('button');
+          let new_section = document.createElement('section');
+          let new_article = document.createElement('article');
+          let new_div = document.createElement('div');
+          let new_h2 = document.createElement('h2');
+          let new_time = document.createElement('time');
+          let new_p = document.createElement('p');
+          new_div.classList.add("info");
+          new_time.classList.add("transp");
+          new_h2.classList.add("transp");
+          new_p.classList.add("transp");
+          new_h2.style.fontSize = "30px";
+          // 中身を追加
+          new_h2.textContent = arr_chatNames[i];
+          new_p.textContent = arr_chatText[i];
+          new_time.textContent = arr_chatTimes[i];
+          // htmlに追加
+          thread_element.appendChild(new_section);
+          new_section.appendChild(new_article);
+          new_article.appendChild(new_div);
+          new_article.appendChild(new_p);
+          new_div.appendChild(new_h2);
+          new_div.appendChild(new_time);
+        }
+    }
+  </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </body>
