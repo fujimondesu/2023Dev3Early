@@ -205,7 +205,8 @@ class DBManager
         $ps->bindValue(4, $detail, PDO::PARAM_STR);
         $ps->execute();
         $result = $ps->fetchAll();
-        return $result;
+        return $maxId;
+        // return $result;
     }
     
     // ジャンル一覧取得
@@ -281,8 +282,7 @@ class DBManager
     
     // 0埋めされた文字から数字に変換
     public function strToNum($num) {
-        $replace = str_replace('0', '', $num);
-        $replace = (int)$replace;
+        $replace = (int)$num;
         return $replace;
     }
     

@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+// テスト用
+// $_SESSION['genre_id'] = "9";
+// $_SESSION['room_name'] = "test create";
+// $_SESSION['detail'] = "new cteate";
+?>
 <!doctype html>
 <!-- 新規話題作成-->
 <html lang="ja">

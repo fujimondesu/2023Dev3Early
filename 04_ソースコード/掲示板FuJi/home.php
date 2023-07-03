@@ -1,6 +1,7 @@
 <?php
 session_start();
 $_SESSION['error'] = "";
+$_SESSION['page'] = "home.php";
 // session_destroy();
 // 初回、セッションに「user_id」が無ければ、「0000000」で上書きし、ゲストモードにする
 if (empty($_SESSION['user_id'])) {
@@ -24,9 +25,8 @@ foreach ($getGenres as $row) {
   $i++;
 }
 
-// if (!empty($_POST['genre_id'])) {
-//   $_SESSION['genre_id'] = $_POST['genre_id'];
-//   var_dump($_SESSION['genre_id']);
+// if (!empty($_SESSION['test'])) {
+//   var_dump($_SESSION['test']);
 // }
 
 // テスト用
