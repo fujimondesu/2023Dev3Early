@@ -1,3 +1,9 @@
+<?php
+session_start();
+$_SESSION['user_id'] = "0000000";
+$_SESSION['user_name'] = "gest";
+$_SESSION['mail'] = "gest@gmail.com";
+?>
 <!doctype html>
 <!-- ログアウト完了画面 -->
 <html lang="ja">
@@ -32,7 +38,7 @@
                 <h3>ログアウトしました。</h3>
                 <p>会話に参加するにはログインが必要です。</p>
                 <p>ログインしますか?</p>
-                <a href="./login.html"><button type="button" class="btn btn-primary rounded-pill my-4 px-5">ログインする</button></a>                
+                <a href="./login.php"><button type="button" class="btn btn-primary rounded-pill my-4 px-5">ログインする</button></a>                
             </form>
         </div>
     </div>

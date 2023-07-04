@@ -68,7 +68,7 @@ foreach ($getGenres as $row) {
           echo '<div class="header-R-child-off">user</div>';
           echo '<a href="./login.php" class="header-R-child-on">login</a>';
         } else {
-          echo '<a href="./usr_inf.html" class="header-R-child-on">user</a>';
+          echo '<a href="./usr_inf.php" class="header-R-child-on">user</a>';
           echo '<a href="./logout.php" class="header-R-child-on">logout</a>';
         }
         ?>
