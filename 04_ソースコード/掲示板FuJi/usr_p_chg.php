@@ -6,6 +6,6 @@ $dbmng = new DBManager();
 $userPass = $dbmng->updatePass($_SESSION['user_id'],$_SESSION['input_pass']);
 $userName = $dbmng->updateName($_SESSION['user_id'],$_SESSION['input_user_name']);
 
-header('Location: p_chg_com.html');
+header('Location: usr_inf_chg_com.php');
 
 ?>
