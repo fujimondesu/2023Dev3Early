@@ -25,7 +25,7 @@ $_SESSION['mail'] = "gest@gmail.com";
       <div class="col-3 header-R-parent">
         <a href="./home.php" class="header-R-child-on">home</a>
         <a href="./usr_inf.php" class="header-R-child-on">user</a>
-        <a href="./logout.php" class="header-R-child-on">logout</a>
+        <a href="./logout.php" class="header-R-child-off">logout</a>
       </div>
     </div>
 
