@@ -1,9 +1,17 @@
 <!-- テスト用 -->
 <?php
 session_start();
-$_SESSION['mail'] = "aaa@gmail.com";
-$_SESSION['pass'] = "pass";
-$_SESSION['name'] = "name";
+require_once './DBManager.php';
+$dbmng = new DBManager();
+$userInfo = $dbmng->userInfoGet($_SESSION['user_id']);
+
+$mail,$pass,$name;
+
+foreach ($userInfo as $row) {
+  $mail = $row['mail_address'];
+  $pass = $row['password'];
+  $name = $row['user_name'];
+}
 ?>
 
 
@@ -54,9 +62,9 @@ $_SESSION['name'] = "name";
       <div class="row justify-content-center">
         <form action="./input_chk.php" method="post" class="border rounded bg-white col-lg-4 col-md-6 col-10 p-3">
           <h2 class="mt-3 mb-5" >ユーザー情報</h2>
-          <div class="mb-3">メールアドレス : <?php echo $_SESSION['mail'];?></div>
-          <div class="mb-3">パスワード : <?php echo $_SESSION['pass'];?></div>
-          <div class="mb-3"> ユーザー名 : <?php echo $_SESSION['name'];?></div>
+          <div class="mb-3">メールアドレス : <?php echo $mail;?></div>
+          <div class="mb-3">パスワード : <?php echo $pass;?></div>
+          <div class="mb-3"> ユーザー名 : <?php echo $name;?></div>
           <div>
           <a href="./usr_inf_chg.php"><button type="button" class="btn btn-primary rounded-pill my-4 px-5">ユーザー情報の変更</button></a>
           </div>
