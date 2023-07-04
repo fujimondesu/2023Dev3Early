@@ -3,7 +3,8 @@ session_start();
 require_once './DBManager.php';
 $dbmng = new DBManager();
 // 指定したユーザーのパスワードを更新
-$user = $dbmng->updatePass($_POST['user_id'],$_POST['pass']);
+$userPass = $dbmng->updatePass($_POST['user_id'],$_SESSION['input_pass']);
+$userName = $dbmng->updateName($_POST['user_id'],$_SESSION['input_user_name']);
 
 header('Location: p_chg_com.html');
 

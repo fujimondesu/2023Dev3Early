@@ -146,6 +146,19 @@ class DBManager
         $result = $ps->fetchAll();
         return $result;
     }
+
+    // ユーザー名を更新
+    public function updateName($uId, $name) {
+        $pdo = $this->dbConnect();
+        $sql = "UPDATE user SET user_name = ? WHERE user_id = ?;";
+
+        $ps = $pdo->prepare($sql);
+        $ps->bindValue(1, $name, PDO::PARAM_STR);
+        $ps->bindValue(2, $uId, PDO::PARAM_STR);
+        $ps->execute();
+        $result = $ps->fetchAll();
+        return $result;
+    }
     
     // userテーブルに新規登録
     public function userRegist($name, $mail, $pass) {
