@@ -20,7 +20,7 @@
       <div class="col-3 header-R-parent">
         <a href="./home.php" class="header-R-child-on">home</a>
         <a href="./usr_inf.php" class="header-R-child-on">user</a>
-        <div class="header-R-child-off">logout</div>
+        <a href="./logout.php" class="header-R-child-on">logout</a>
       </div>
     </div>
   
