@@ -1,5 +1,7 @@
 <?php
 session_start();
+require_once './DBManager.php';
+$dbmng = new DBManager();
 
 // ログインしているか
 if($_SESSION['user_id'] == "0000000"){
