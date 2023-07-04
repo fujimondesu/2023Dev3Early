@@ -1,11 +1,12 @@
-<!-- テスト用 -->
 <?php
 session_start();
 require_once './DBManager.php';
 $dbmng = new DBManager();
 $userInfo = $dbmng->userInfoGet($_SESSION['user_id']);
 
-$mail,$pass,$name;
+$mail;
+$pass;
+$name;
 
 foreach ($userInfo as $row) {
   $mail = $row['mail_address'];
@@ -13,8 +14,7 @@ foreach ($userInfo as $row) {
   $name = $row['user_name'];
 }
 ?>
-
-
+<!-- テスト用 -->
 <!-- ユーザー情報 -->
 <!doctype html>
 <html lang="ja">
