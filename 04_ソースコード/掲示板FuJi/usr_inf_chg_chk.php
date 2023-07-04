@@ -1,8 +1,5 @@
 <?php
 session_start();
-$_SESSION['mail'] = "aaa@gmail.com";
-$_SESSION['pass'] = "pass";
-$_SESSION['name'] = "name";
 ?>
 
 <!-- ユーザー情報変更確認 -->
@@ -48,8 +45,8 @@ $_SESSION['name'] = "name";
         <form action="./input_chk.php" method="post" class="border rounded bg-white col-lg-4 col-md-6 col-10 p-3">
           <h2 class="mt-3 mb-5" >こちらの内容で間違いありませんか？</h2>
           <!-- メールアドレス いるかも -->
-          <p>パスワード: <?php echo $_SESSION['pass'];?></p>
-          <p>ユーザー名: <?php echo $_SESSION['name'];?></p>
+          <p>パスワード: <?php echo $_SESSION['input_pass'];?></p>
+          <p>ユーザー名: <?php echo $_SESSION['input_user_name'];?></p>
           <a href="./usr_inf.php"><button type="button" class="btn btn-primary rounded-pill my-4 px-5">ユーザー情報へ</button></a>
         </form>
       </div>
