@@ -1,7 +1,17 @@
-<!-- 確認に進むボタンのリンク home -->
+<?php
+session_start();
+require_once './DBManager.php';
+$dbmng = new DBManager();
+$userInfo = $dbmng->userInfoGet($_SESSION['user_id']);
 
+$mail;
+$pass;
 
-
+foreach ($userInfo as $row) {
+  $mail = $row['mail_address'];
+  $pass = $row['password'];
+}
+?>
 
 <!-- ユーザー情報変更 -->
 <!doctype html>
@@ -43,20 +53,31 @@
     <!-- フォーム -->
     <div class="container-fluid">
       <div class="row justify-content-center">
-        <form action="./input_chk.php" method="post" class="border rounded bg-white col-lg-4 col-md-6 col-10 p-3">
+        <form action="./usr_inf_chg_input_chk.php" method="post" class="border rounded bg-white col-lg-4 col-md-6 col-10 p-3">
           <h2 class="mt-3">ユーザー情報変更</h2>
+
+          <!-- エラー表示 -->
+        <?php
+        if ($_SESSION['error'] != "") {
+          echo '<div class="error">';
+          echo $_SESSION['error'];
+          echo '</div>';
+        }
+        ?>
+
+
           <p>ユーザー名変更</p>
           <div class="mb-3">
             <input type="text" class="form-control rounded-pill w-75 m-auto" name="name" placeholder="ユーザー名" />
           </div>
           <p>パスワード変更</p>
           <div class="mb-3">
-            <input type="text" class="form-control rounded-pill w-75 m-auto" name="pass" placeholder="パスワード" />
+            <input type="text" class="form-control rounded-pill w-75 m-auto" name="pass1" placeholder="パスワード" />
           </div>
           <div class="mb-3">
-            <input type="text" class="form-control rounded-pill w-75 m-auto" name="pass" placeholder="確認用パスワード" />
+            <input type="text" class="form-control rounded-pill w-75 m-auto" name="pass2" placeholder="確認用パスワード" />
           </div>
-          <a href="./usr_inf_chg_chk.php"><button type="button" class="btn btn-primary rounded-pill my-4 px-5">確認に進む</button></a>
+          <input class="btn btn-primary rounded-pill my-4 px-5" type="submit" value="確認に進む">
         </form>
       </div>
     </div>
