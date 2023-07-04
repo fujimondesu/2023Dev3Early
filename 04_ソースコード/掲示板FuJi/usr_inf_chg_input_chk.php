@@ -16,6 +16,8 @@ if(empty($_POST['name']) || empty($_POST['pass1']) || empty($_POST['pass2'])) {
 }else{
     // エラー文を消去
     $_SESSION['error'] = "";
+    $_SESSION['input_user_name'] = $_POST['name'];
+    $_SESSION['input_pass'] = $_POST['pass1'];
     header('Location: usr_inf_chg_chk.php');
 }
 ?>

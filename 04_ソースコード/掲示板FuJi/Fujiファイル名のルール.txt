@@ -11,27 +11,27 @@ chk    ➡　　　確認(check)
 chg    ➡　　　変更(change)
 
 
-$_SESSION['page']      ==  どのページから来たか
-$_SESSION['user_name'] ==  ユーザー名
+$_SESSION['page']            ==  どのページから来たか
+$_SESSION['user_name']       ==  ユーザー名
 $_SESSION['input_user_name'] ==  ユーザー名（ユーザー情報変更画面に入力された値）
-$_SESSION['pass']      ==  パスワード（新規登録）
+$_SESSION['pass']            ==  パスワード（新規登録）
 $_SESSION['input_pass']      ==  パスワード（ユーザー情報変更画面に入力された値）
-$_SESSION['mail']      ==  メールアドレス（新規登録）
-$_SESSION['user_id']   ==  ユーザーid
-$_SESSION['genre_id']  ==  ジャンルid
-$_SESSION['room_id']   ==  スレッドid（話題）
-$_SESSION['error']     ==  エラー文（複数の場合は,でくっつける予定）
-$_SESSION['chat']      ==  チャット文
+$_SESSION['mail']            ==  メールアドレス（新規登録）
+$_SESSION['user_id']         ==  ユーザーid
+$_SESSION['genre_id']        ==  ジャンルid
+$_SESSION['room_id']         ==  スレッドid（話題）
+$_SESSION['error']           ==  エラー文（複数の場合は,でくっつける予定）
+$_SESSION['chat']            ==  チャット文
 
 
-$_POST['user_id']      == ユーザーid
-$_POST['name']         == ユーザー名
-$_POST['mail']         == メールアドレス
-$_POST['pass']         == パスワード
-$_POST['room_id']      == スレッドid（話題）
-$_POST['room_name']    == スレッド名（話題）
-$_POST['detail']       == スレッド説明（話題）
-$_POST['genre_id']     == ジャンルid
-$_POST['chat']         == チャット文
+$_POST['user_id']            == ユーザーid
+$_POST['name']               == ユーザー名
+$_POST['mail']               == メールアドレス
+$_POST['pass']               == パスワード
+$_POST['room_id']            == スレッドid（話題）
+$_POST['room_name']          == スレッド名（話題）
+$_POST['detail']             == スレッド説明（話題）
+$_POST['genre_id']           == ジャンルid
+$_POST['chat']               == チャット文
 
 
