@@ -48,7 +48,7 @@ class DBManager
                 $ps->bindValue(1, $mail, PDO::PARAM_STR);
                 $ps->execute();
                 $result1 = $ps->fetchAll();
-                return $result1['user_id'];
+                return $result1[0]['user_id'];
             }
         }
         return "error";
@@ -65,8 +65,8 @@ class DBManager
         $result = $ps->fetchAll();
 
         // 値が返ってきたか、ゲストモード以外か
-        if($result['user_id'] != "0000000" || !empty($result['user_id'])) {
-            return $result['user_id'];
+        if($result[0]['user_id'] != "0000000" || !empty($result[0]['user_id'])) {
+            return $result[0]['user_id'];
         }else{
             return "error";
         }
