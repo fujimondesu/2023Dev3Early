@@ -46,9 +46,9 @@ session_start();
             <form class="border rounded bg-white col-md-4 p-3">
                 <h3>こちらの内容で登録しますか。</h3>
                 <p></p>
-                <p>メールアドレス : monfuji0508@icloud.com</p>
-                <p>パスワード : 114514</p>
-                <p>ユーザー名 : フジモン</p>
+                <p>メールアドレス : <?php echo $_SESSION ['mail']?></p>
+                <p>パスワード: <?php echo $_SESSION['pass'];?></p>
+                <p>ユーザー名: <?php echo $_SESSION['user_name'];?></p>
                 <a href="./usr_reg.php"><button type="button" class="btn btn-primary rounded-pill my-4 px-5">登録する</button></a>
             </form>
         </div>
