@@ -144,17 +144,17 @@ if (!empty($chats)) {
         </div>
 
         <!-- コメント入力部分 -->
-        <!-- <div> -->
         <form action="./login_chk.php" method="post" style="height:60px; display: flex; justify-content: space-between;">
           <div style="width: 80%; height:100%; margin-left:5%;">
             <textarea id="chat" name="chat" cols="70" rows="1" style="width: 100%; height:100%; font-size: 30px; border: 2px solid #666; border-radius: 10px; "></textarea>
           </div>
-          <div style="width: 8%; margin-right: 8%; margin-left:3%; border-radius: 10px; background-color:#52A9FA; position: relative;">
-            <input style="width:100%; height:100%; background: transparent; border-color: transparent transparent transparent transparent; " type="submit" value="">
-            <i class="bi bi-send-fill" style="height:95px; color:white; position: absolute;"></i>
+          <div style="width: 120px; margin-right: 8%; margin-left:3%; border-radius: 10px; background-color:#52A9FA; position: relative;">
+            <input style="width:100%; height:100%; background: transparent; border-color: transparent transparent transparent transparent; position: absolute; left:0px; z-index: 1000;" type="submit" value="">
+            <svg xmlns="http://www.w3.org/2000/svg" width="45px" height="45px" fill="white" class="bi bi-send-fill" viewBox="0 0 16 16" style="position: absolute; left:35px;margin-top:8px;">
+              <path fill-rule="evenodd" d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083l6-15Zm-1.833 1.89.471-1.178-1.178.471L5.93 9.363l.338.215a.5.5 0 0 1 .154.154l.215.338 7.494-7.494Z" />
+            </svg>
           </div>
         </form>
-        <!-- </div> -->
       </div>
     </div>
   </div>
@@ -168,8 +168,6 @@ if (!empty($chats)) {
     function isClicked(e, obj, num) {
       // 選択したジャンルの「room_id」を「POST」でこの画面に送信
       sendPost("", "room_id", num);
-
-      // output(num);
 
       console.log("a");
       <?php
@@ -247,7 +245,6 @@ if (!empty($chats)) {
       let len = arr_chatNames.length;
       for (let i = 0; i < len; i++) {
         // 新しいhtml要素を作成
-        // let new_button = document.createElement('button');
         let new_section = document.createElement('section');
         let new_article = document.createElement('article');
         let new_div = document.createElement('div');
