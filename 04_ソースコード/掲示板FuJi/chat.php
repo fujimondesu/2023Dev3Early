@@ -14,11 +14,11 @@ $dbmng = new DBManager();
 // スレッド一覧取得
 $getThreads = $dbmng->getThreadList($_SESSION['genre_id']);
 // スレッド名取得
-$roomName = $dbmng->getRoomName($_POST['room_id']);
+$roomName = $dbmng->getRoomName($_SESSION['room_id']);
 // ユーザー名取得
 $userName = $dbmng->userNameGet($_SESSION['user_id']);
 // 選択したスレッドのチャット一覧取得
-$chats = $dbmng->getChatList($_POST['room_id']);
+$chats = $dbmng->getChatList($_SESSION['room_id']);
 // 「room_id」を数字に変換
 $viewFlgPhp;
 $threadIds;
@@ -36,12 +36,12 @@ foreach ($getThreads as $row) {
 
 if (!empty($chats)) {
   $viewFlgPhp = true;
-}else{
+} else {
   $viewFlgPhp = false;
 }
 
 // テスト用
-// var_dump($_POST['room_id']);
+// var_dump($_SESSION['room_id']);
 // var_dump($chats);
 ?>
 <!-- チャット画面 -->
@@ -107,7 +107,7 @@ if (!empty($chats)) {
             for ($i = 0; $i < count($threadNames); $i++) {
               $chk = '';
               // ジャンルを選んでいたか
-              if ($threadIds[$i] == $_POST['room_id']) {
+              if ($threadIds[$i] == $_SESSION['room_id']) {
                 $chk = 'checked';
               }
               $id = $threadIds[$i];
@@ -125,7 +125,7 @@ if (!empty($chats)) {
           </div>
         </div>
       </div>
-      <div class="col-sm-9 col-xs-12" style="height:89vh; padding:0;">
+      <div class="col-sm-9 col-xs-12" style="height:81vh; padding:0;">
 
         <!-- 選んだスレッドの名前を表示 -->
         <div style="background-color:white; height: 50px; display: grid;place-items: center; font-size:20px;">
@@ -142,6 +142,19 @@ if (!empty($chats)) {
           <!-- ここにスレッドが入る -->
 
         </div>
+
+        <!-- コメント入力部分 -->
+        <!-- <div> -->
+        <form action="./login_chk.php" method="post" style="height:60px; display: flex; justify-content: space-between;">
+          <div style="width: 80%; height:100%; margin-left:5%;">
+            <textarea id="chat" name="chat" cols="70" rows="1" style="width: 100%; height:100%; font-size: 30px; border: 2px solid #666; border-radius: 10px; "></textarea>
+          </div>
+          <div style="width: 8%; margin-right: 8%; margin-left:3%; border-radius: 10px; background-color:#52A9FA; position: relative;">
+            <input style="width:100%; height:100%; background: transparent; border-color: transparent transparent transparent transparent; " type="submit" value="">
+            <i class="bi bi-send-fill" style="height:95px; color:white; position: absolute;"></i>
+          </div>
+        </form>
+        <!-- </div> -->
       </div>
     </div>
   </div>
@@ -155,13 +168,13 @@ if (!empty($chats)) {
     function isClicked(e, obj, num) {
       // 選択したジャンルの「room_id」を「POST」でこの画面に送信
       sendPost("", "room_id", num);
-      
+
       // output(num);
-      
+
       console.log("a");
       <?php
       if ($viewFlgPhp == true) {
-        echo "output(\"". $_POST['room_id'] ."\");";
+        echo "output(\"" . $_SESSION['room_id'] . "\");";
       }
       ?>
     }
@@ -182,11 +195,11 @@ if (!empty($chats)) {
 
     // 最初に画面を表示したときにスレッドを描画する処理
     function first_output() {
-        <?php
-        if ($viewFlgPhp == true) {
-          echo "output(\"" . $_POST['room_id'] . "\");";
-        }
-        ?>
+      <?php
+      if ($viewFlgPhp == true) {
+        echo "output(\"" . $_SESSION['room_id'] . "\");";
+      }
+      ?>
     }
 
     // スレッドを描画する処理（numは最初の描画に必要）
@@ -209,47 +222,55 @@ if (!empty($chats)) {
         $js_chatText = json_encode($chatText);
       }
       ?>;
-        // 配列をphp→jsに代入
-        let arr_chatIds<?php if ($viewFlgPhp == true) {echo " = " . $js_chatIds;} ?>;
-        let arr_chatNames<?php if ($viewFlgPhp == true) {echo " = " . $js_chatNames;} ?>;
-        let arr_chatTimes<?php if ($viewFlgPhp == true) {echo " = " . $js_chatTimes;} ?>;
-        let arr_chatText<?php if ($viewFlgPhp == true) {echo " = " . $js_chatText;} ?>;
-        // 選択された要素のcssを変える
-        document.getElementById(num).classList.add("genre-active");
-        // スレッドを挿入するタグの「id」を取得
-        let thread_element = document.getElementById('thread');
-        // スレッド一覧を画面から削除する
-        while (thread_element.lastChild) {
-          thread_element.removeChild(thread_element.lastChild);
-        }
-        // ジャンル数を取得
-        let len = arr_chatNames.length;
-        for (let i = 0; i < len; i++) {
-          // 新しいhtml要素を作成
-          // let new_button = document.createElement('button');
-          let new_section = document.createElement('section');
-          let new_article = document.createElement('article');
-          let new_div = document.createElement('div');
-          let new_h2 = document.createElement('h2');
-          let new_time = document.createElement('time');
-          let new_p = document.createElement('p');
-          new_div.classList.add("info");
-          new_time.classList.add("transp");
-          new_h2.classList.add("transp");
-          new_p.classList.add("transp");
-          new_h2.style.fontSize = "30px";
-          // 中身を追加
-          new_h2.textContent = arr_chatNames[i];
-          new_p.textContent = arr_chatText[i];
-          new_time.textContent = arr_chatTimes[i];
-          // htmlに追加
-          thread_element.appendChild(new_section);
-          new_section.appendChild(new_article);
-          new_article.appendChild(new_div);
-          new_article.appendChild(new_p);
-          new_div.appendChild(new_h2);
-          new_div.appendChild(new_time);
-        }
+      // 配列をphp→jsに代入
+      let arr_chatIds<?php if ($viewFlgPhp == true) {
+                        echo " = " . $js_chatIds;
+                      } ?>;
+      let arr_chatNames<?php if ($viewFlgPhp == true) {
+                          echo " = " . $js_chatNames;
+                        } ?>;
+      let arr_chatTimes<?php if ($viewFlgPhp == true) {
+                          echo " = " . $js_chatTimes;
+                        } ?>;
+      let arr_chatText<?php if ($viewFlgPhp == true) {
+                        echo " = " . $js_chatText;
+                      } ?>;
+      // 選択された要素のcssを変える
+      document.getElementById(num).classList.add("genre-active");
+      // スレッドを挿入するタグの「id」を取得
+      let thread_element = document.getElementById('thread');
+      // スレッド一覧を画面から削除する
+      while (thread_element.lastChild) {
+        thread_element.removeChild(thread_element.lastChild);
+      }
+      // ジャンル数を取得
+      let len = arr_chatNames.length;
+      for (let i = 0; i < len; i++) {
+        // 新しいhtml要素を作成
+        // let new_button = document.createElement('button');
+        let new_section = document.createElement('section');
+        let new_article = document.createElement('article');
+        let new_div = document.createElement('div');
+        let new_h2 = document.createElement('h2');
+        let new_time = document.createElement('time');
+        let new_p = document.createElement('p');
+        new_div.classList.add("info");
+        new_time.classList.add("transp");
+        new_h2.classList.add("transp");
+        new_p.classList.add("transp");
+        new_h2.style.fontSize = "30px";
+        // 中身を追加
+        new_h2.textContent = arr_chatNames[i];
+        new_p.textContent = arr_chatText[i];
+        new_time.textContent = arr_chatTimes[i];
+        // htmlに追加
+        thread_element.appendChild(new_section);
+        new_section.appendChild(new_article);
+        new_article.appendChild(new_div);
+        new_article.appendChild(new_p);
+        new_div.appendChild(new_h2);
+        new_div.appendChild(new_time);
+      }
     }
   </script>
 
