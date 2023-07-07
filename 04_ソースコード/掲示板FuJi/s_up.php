@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!doctype html>
 <!-- 新規登録画面 -->
 <html lang="ja">
@@ -10,8 +14,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="./css/style.css">
   </head>
-
-  <!-- ヘッダー -->
+  
+  <body class="text-center">
+    <div class="dropdown">
+    </div>
+    <!-- ヘッダー -->
   <div class="container-fluid" style="padding-left: 0">
     <div class="row header-style">
       <div class="col-9 header-L">
@@ -25,10 +32,11 @@
     </div>
   </div>
 
+  <!-- 戻るボタン -->
+  <div style="width: 80px;">
+      <a href="#" class="btn-back" onclick="window.history.back(); return false;">＜戻る</a>
+  </div>
   
-  <body class="text-center">
-    <div class="dropdown">
-    </div>
     <h1 class="my-5" style="color: #ffffff; font-family: cursive;">掲示板FuJi</h1>
     <div class="container text-center">
         <div class="row justify-content-center">
@@ -43,7 +51,7 @@
                 <div class="mb-3">
                   <input type="name" class="form-control rounded-pill w-75 m-auto" id="exampleFormControlInput1" placeholder="ユーザー名">
               </div>
-              <a href="./s_up_chk.php"><button type="button" class="btn btn-primary rounded-pill my-4 px-5">確認に進む</button></a>
+              <input class="btn btn-primary rounded-pill my-4 px-5" type="submit" value="確認に進む">
             </form>
         </div>
     </div>
