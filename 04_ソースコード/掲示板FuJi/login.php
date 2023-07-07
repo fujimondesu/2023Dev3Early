@@ -78,7 +78,7 @@ session_start();
           </a>
         </div>
         <div>
-          <a href="./s_up.html">
+          <a href="./s_up.php">
             <button type="button" class="btn btn-link">新規登録</button>
           </a>
         </div>
