@@ -1,5 +1,8 @@
 <?php
 session_start();
+$_SESSION ['name'] = $_POST['name'];
+$_SESSION ['mail'] = $_POST['mail'];
+$_SESSION ['pass'] = $_POST['pass'];
 ?>
 
 <!doctype html>
@@ -48,7 +51,7 @@ session_start();
                 <p></p>
                 <p>メールアドレス : <?php echo $_SESSION ['mail']?></p>
                 <p>パスワード: <?php echo $_SESSION['pass'];?></p>
-                <p>ユーザー名: <?php echo $_SESSION['user_name'];?></p>
+                <p>ユーザー名: <?php echo $_SESSION['name'];?></p>
                 <a href="./usr_reg.php"><button type="button" class="btn btn-primary rounded-pill my-4 px-5">登録する</button></a>
             </form>
         </div>
