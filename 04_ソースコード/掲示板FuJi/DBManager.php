@@ -160,7 +160,7 @@ class DBManager
         return $result;
     }
     
-    // userテーブルに新規登録
+    // ユーザー新規登録
     public function userRegist($name, $mail, $pass) {
         $pdo = $this->dbConnect();
         // 一番最後のuser_idを取得し、+1されたuser_idを生成する

@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!doctype html>
 <!-- 新規登録画面 -->
 <html lang="ja">
@@ -10,8 +14,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="./css/style.css">
   </head>
-
-  <!-- ヘッダー -->
+  
+  <body class="text-center">
+    <div class="dropdown">
+    </div>
+    <!-- ヘッダー -->
   <div class="container-fluid" style="padding-left: 0">
     <div class="row header-style">
       <div class="col-9 header-L">
@@ -25,25 +32,26 @@
     </div>
   </div>
 
+  <!-- 戻るボタン -->
+  <div style="width: 80px;">
+      <a href="#" class="btn-back" onclick="window.history.back(); return false;">＜戻る</a>
+  </div>
   
-  <body class="text-center">
-    <div class="dropdown">
-    </div>
     <h1 class="my-5" style="color: #ffffff; font-family: cursive;">掲示板FuJi</h1>
     <div class="container text-center">
         <div class="row justify-content-center">
-            <form class="border rounded bg-white col-md-4 p-3">
+            <form action="s_up_chk.php" method="post" class="border rounded bg-white col-md-4 p-3">
                 <h2 class="mt-3 mb-5" style="color: #000000; font-family: cursive;">新規登録</h2>
                 <div class="mb-3">
-                    <input type="email" class="form-control rounded-pill w-75 m-auto" id="exampleFormControlInput1" placeholder="メールアドレス">
+                    <input type="mail" class="form-control rounded-pill w-75 m-auto" id="exampleFormControlInput1" name="mail" placeholder="メールアドレス">
                 </div>
                 <div class="mb-3">
-                    <input type="password" class="form-control rounded-pill w-75 m-auto" id="exampleFormControlInput1" placeholder="パスワード">
+                    <input type="password" class="form-control rounded-pill w-75 m-auto" id="exampleFormControlInput1" name="pass" placeholder="パスワード">
                 </div>
                 <div class="mb-3">
-                  <input type="name" class="form-control rounded-pill w-75 m-auto" id="exampleFormControlInput1" placeholder="ユーザー名">
+                  <input type="text" class="form-control rounded-pill w-75 m-auto" id="exampleFormControlInput1" name="name" placeholder="ユーザー名">
               </div>
-              <a href="./s_up_chk.php"><button type="button" class="btn btn-primary rounded-pill my-4 px-5">確認に進む</button></a>
+              <input class="btn btn-primary rounded-pill my-4 px-5" type="submit" value="確認に進む">
             </form>
         </div>
     </div>
