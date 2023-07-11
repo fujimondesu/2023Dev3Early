@@ -16,7 +16,8 @@ $_SESSION['mail'] = "gest@gmail.com";
     <link rel="stylesheet" href="./css/style.css">
   </head>
 
-  <!-- ヘッダー　-->
+  <div class="container-fluid" style="padding-left: 0">
+    <!-- ヘッダー -->
   <div class="container-fluid" style="padding-left: 0">
     <div class="row header-style">
       <div class="col-9 header-L">
@@ -24,10 +25,11 @@ $_SESSION['mail'] = "gest@gmail.com";
       </div>
       <div class="col-3 header-R-parent">
         <a href="./home.php" class="header-R-child-on">home</a>
-        <a href="./usr_inf.php" class="header-R-child-on">user</a>
-        <a href="./logout.php" class="header-R-child-off">logout</a>
+        <div class="header-R-child-off">user</div>
+        <a href="./login.php" class="header-R-child-on">login</a>
       </div>
     </div>
+  </div>
 
 
   <body class="text-center">
