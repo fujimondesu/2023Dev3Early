@@ -17,7 +17,7 @@ if($user_id == "error") {
     header('Location: p_chg_usr_chk.html');
 }else{
     // あくまで変更したいユーザー。ログインしているユーザーとは限らないため、「SESSION」ではなく「POST」を使う
-    $_POST['user_id'] = $user_id;
-    header('Location: p_reset.html');
+    $_SESSION['user_id_cng'] = $user_id;
+    header('Location:p_chg_input.html');
 }
 ?>
