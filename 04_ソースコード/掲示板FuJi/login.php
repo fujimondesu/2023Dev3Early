@@ -74,7 +74,7 @@ $_SESSION['input_pass'] = "";
           <input type="submit" class="btn btn-primary rounded-pill my-4 px-5" value="ログイン" />
         </div>
         <div>
-          <a href="./p_chg_usr_chk.html">
+          <a href="./p_chg_usr_chk.php">
             <button type="button" class="btn btn-link">
               パスワードを忘れた方はこちら
             </button>

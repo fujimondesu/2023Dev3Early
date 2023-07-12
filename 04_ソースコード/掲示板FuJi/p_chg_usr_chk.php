@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!doctype html>
 <!-- パスワードを忘れた方の画面-->
 <html lang="ja">
@@ -37,7 +40,7 @@
     <h1 class="my-5" style="color: #ffffff; font-family: cursive;">掲示板FuJi</h1>
     <div class="container text-center">
         <div class="row justify-content-center">
-            <form action="usr_inf_get.php" class="border rounded bg-white col-md-4 p-3">
+            <form action="usr_inf_get.php" class="border rounded bg-white col-md-4 p-3" method="post">
                 <h2 class="mt-3 mb-5">パスワードを忘れた方</h2>
                 <div class="mb-3">
                     <input type="text" class="form-control rounded-pill w-75 m-auto" id="exampleFormControlInput1" placeholder="メールアドレスまたはユーザー名" name="mail">
