@@ -11,23 +11,23 @@
   </head>
 
   <!-- ヘッダー　-->
-  <div style="display: flex; width: 100%; height: 50px">
-    <a href="./home.html">
-      <img src="./img/rogo.png" width="100px" height="50px" alt="ロゴ" />
-    </a>
-
-    <div class="hedda-M"></div>
-
-    <div class="hedda-R">
-      
-      <ul
-        class="nav justify-content-end; ml-auto"
-        style="width: 100%; height: 100%"
-      >
-      <a class="nav-link" href="./home.html">home</a>
-      <a class="nav-link" href="./user_info_change_2.html">user</a>
-      <a class="nav-link" href="./logout.html">logout</a>
-      </ul>
+  <div class="container-fluid" style="padding-left: 0">
+      <div class="row header-style">
+        <div class="col-9 header-L">
+          <img src="./img/logo.png" width="auto" height="100%" alt="logo" />
+        </div>
+        <div class="col-3 header-R-parent">
+          <a href="./home.php" class="header-R-child-on">home</a>
+          <div class="header-R-child-off">user</div>
+          <!-- 「login」「logout」切り替え -->
+          <?php
+          if ($_SESSION['user_id'] == "0000000") {
+            echo '<a href="./login.php" class="header-R-child-on">login</a>';
+          }else{
+            echo '<a href="./logout.php" class="header-R-child-on">logout</a>';
+          }
+          ?>
+        </div>
     </div>
   </div>
 
@@ -37,13 +37,13 @@
     <h1 class="my-5" style="color: #ffffff; font-family: cursive;">掲示板FuJi</h1>
     <div class="container text-center">
         <div class="row justify-content-center">
-            <form class="border rounded bg-white col-md-4 p-3">
+            <form action="usr_inf_get.php" class="border rounded bg-white col-md-4 p-3">
                 <h2 class="mt-3 mb-5">パスワードを忘れた方</h2>
                 <div class="mb-3">
-                    <input type="text" class="form-control rounded-pill w-75 m-auto" id="exampleFormControlInput1" placeholder="メールアドレスまたはユーザー名">
+                    <input type="text" class="form-control rounded-pill w-75 m-auto" id="exampleFormControlInput1" placeholder="メールアドレスまたはユーザー名" name="mail">
                 </div>
-                <a href="./pass_change.html">
-                  <button type="button" class="btn btn-primary rounded-pill my-4 px-5">パスワードをリセットする</button>
+                <a href="./p_chg_input.php">
+                  <button type="submit" class="btn btn-primary rounded-pill my-4 px-5">パスワードをリセットする</button>
                 </a>
             </form>
         </div>
