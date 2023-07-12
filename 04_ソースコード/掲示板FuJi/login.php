@@ -1,6 +1,8 @@
 
 <?php
 session_start();
+$_SESSION['input_mail'] = "";
+$_SESSION['input_pass'] = "";
 ?>
 <!-- ログイン画面 -->
 <!DOCTYPE html>
@@ -50,7 +52,7 @@ session_start();
   <!-- フォーム -->
   <div class="container-fluid">
     <div class="row justify-content-center">
-      <form action="./usr_exist.php" method="post" class="border rounded bg-white col-lg-4 col-md-6 col-10 p-3">
+      <form action="./input_chk.php" method="post" class="border rounded bg-white col-lg-4 col-md-6 col-10 p-3">
         <h2 class="mt-3">ログインして会話に参加しましょう!</h2>
 
         <!-- エラー表示 -->

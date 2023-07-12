@@ -15,8 +15,9 @@ $_SESSION['page']            ==  どのページから来たか
 $_SESSION['user_name']       ==  ユーザー名
 $_SESSION['input_user_name'] ==  ユーザー名（ユーザー情報変更画面に入力された値）
 $_SESSION['pass']            ==  パスワード（新規登録）
-$_SESSION['input_pass']      ==  パスワード（ユーザー情報変更画面に入力された値）
+$_SESSION['input_pass']      ==  パスワード（ユーザー情報変更画面に入力された値）（ログインする時）
 $_SESSION['mail']            ==  メールアドレス（新規登録）
+$_SESSION['input_mail']      ==  メールアドレス（ログインする時）
 $_SESSION['user_id']         ==  ユーザーid
 $_SESSION['genre_id']        ==  ジャンルid
 $_SESSION['room_id']         ==  スレッドid（話題）
