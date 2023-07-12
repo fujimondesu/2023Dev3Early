@@ -27,10 +27,21 @@ session_start();
       </div>
       <div class="col-3 header-R-parent">
         <a href="./home.php" class="header-R-child-on">home</a>
-        <a href="./usr_inf.php" class="header-R-child-on">user</a>
-        <a href="./logout.php" class="header-R-child-on">logout</a>
+
+        <!-- 「login」「logout」切り替え -->
+        <?php
+        if ($_SESSION['user_id'] == "0000000") {
+          echo '<div class="header-R-child-off">user</div>';
+          echo '<a href="./login.php" class="header-R-child-on">login</a>';
+        } else {
+          echo '<a href="./usr_inf.php" class="header-R-child-on">user</a>';
+          echo '<a href="./logout.php" class="header-R-child-on">logout</a>';
+        }
+        ?>
+
       </div>
     </div>
+  </div>
 
     <!-- 戻るボタン -->
     <div style="width: 80px;">
