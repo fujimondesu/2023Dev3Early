@@ -44,7 +44,7 @@ session_start();
                 <h3>こちらの内容で間違いありませんか？</h3>
                 <p></p>
                 <p>パスワード : <?php echo $_SESSION['input_pass'];?></p>
-                <a href="./p_chg_com.html"><button type="button" class="btn btn-primary rounded-pill my-4 px-5">パスワード変更</button></a>
+                <a href="./p_chg.php"><button type="button" class="btn btn-primary rounded-pill my-4 px-5">パスワード変更</button></a>
                 
             </form>
         </div>
