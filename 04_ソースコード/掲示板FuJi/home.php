@@ -35,7 +35,7 @@ foreach ($getGenres as $row) {
 // }
 
 // テスト用
-// var_dump($_POST);
+// var_dump($_SESSION['test']);
 ?>
 <!-- ホーム画面(最初ここ) -->
 <!doctype html>

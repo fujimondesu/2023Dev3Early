@@ -40,12 +40,13 @@ class DBManager
 
         if($result != "error") {
             $result2 = $this->passCheck($mail, $pass);
-            if($result2 != "error") {
+            if($result2 != NULL) {
                 $pdo = $this->dbConnect();
-                $sql = "SELECT user_id FROM user WHERE mail_address = ?";
+                $sql = "SELECT user_id FROM user WHERE mail_address = ? AND password = ?";
         
                 $ps = $pdo->prepare($sql);
                 $ps->bindValue(1, $mail, PDO::PARAM_STR);
+                $ps->bindValue(2, $pass, PDO::PARAM_STR);
                 $ps->execute();
                 $result1 = $ps->fetchAll();
                 return $result1[0]['user_id'];
