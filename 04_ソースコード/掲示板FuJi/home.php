@@ -17,6 +17,7 @@ $dbmng = new DBManager();
 $getGenres = $dbmng->getGenre();
 // ユーザー名取得
 $userName = $dbmng->userNameGet($_SESSION['user_id']);
+$_SESSION['name'] = $userName;
 $genreIds;
 $genreNames;
 $threadIds;
