@@ -4,7 +4,7 @@ require_once './DBManager.php';
 $dbmng = new DBManager();
 
 // メールアドレス未入力チェック
-if(empty($_POST['mail'])) {
+if(empty($_POST['mail']) || $_POST['mail'] == "") {
     $_SESSION['error'] = "メールアドレスが入力されていません。";
     header('Location: p_chg_usr_chk.php');
 }
