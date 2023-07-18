@@ -18,14 +18,7 @@
       <div class="col-3 header-R-parent">
         <a href="./home.php" class="header-R-child-on">home</a>
         <div class="header-R-child-off">user</div>
-        <!-- 「login」「logout」切り替え -->
-        <?php
-        if ($_SESSION['user_id'] == "0000000") {
-          echo '<a href="./login.php" class="header-R-child-on">login</a>';
-        } else {
-          echo '<a href="./logout.php" class="header-R-child-on">logout</a>';
-        }
-        ?>
+          <a href="./login.php" class="header-R-child-on">login</a>
       </div>
     </div>
   </div>
@@ -36,7 +29,8 @@
         <div class="row justify-content-center">
             <form class="border rounded bg-white col-md-4 p-3">
                 パスワード変更を完了しました。
-                <a herf="login.php">
+                <br>
+                <a href="login.php">
                 <button type="button" class="btn btn-primary rounded-pill my-4 px-5">ログイン画面へ</button>
                 </a>
             </form>
