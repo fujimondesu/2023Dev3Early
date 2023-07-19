@@ -18,6 +18,17 @@
   top: 10px;
 }
 
+.hedda-M {
+  /*ヘッダー*/
+  background-color: #E7D0A9;
+  width: 80%;
+  height: 100%;
+}
+
+.hedda-R {
+  /*ヘッダーの右上*/
+  background-color: pink;
+  width: 20%;
 .header-style {
   background-color: pink;
   height: 55px;
