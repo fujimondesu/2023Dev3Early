@@ -55,10 +55,10 @@ session_start();
       <form action="./p_chk.php" class="border rounded bg-white col-md-4 p-3" method="post">
         <h2 class="mt-3 mb-5" style="color: #000000; font-family: cursive;">パスワード変更</h2>
         <div class="mb-3">
-          <input type="text" class="form-control rounded-pill w-75 m-auto" placeholder="変更パスワード" name="pass1">
+          <input type="text" maxlength="16" class="form-control rounded-pill w-75 m-auto" placeholder="変更パスワード" name="pass1">
         </div>
         <div class="mb-3">
-          <input type="text" class="form-control rounded-pill w-75 m-auto" placeholder="確認用パスワード" name="pass2">
+          <input type="text" maxlength="16" class="form-control rounded-pill w-75 m-auto" placeholder="確認用パスワード" name="pass2">
         </div>
         <button type="submit" class="btn btn-primary rounded-pill my-4 px-5">パスワード変更</button>
       </form>
