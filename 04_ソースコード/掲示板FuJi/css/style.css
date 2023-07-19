@@ -21,6 +21,7 @@
 .hedda-M {
   /*ヘッダー*/
   background-color: #E7D0A9;
+
   width: 80%;
   height: 100%;
 }
@@ -29,6 +30,14 @@
   /*ヘッダーの右上*/
   background-color: pink;
   width: 20%;
+}
+
+.nav-item {
+  /* 右上のリンク */
+  width: 30%;
+  height: 100%;
+}
+
 .header-style {
   background-color: pink;
   height: 55px;
