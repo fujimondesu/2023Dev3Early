@@ -47,6 +47,7 @@ session_start();
           <!-- メールアドレス いるかも -->
           <p>パスワード: <?php echo $_SESSION['input_pass'];?></p>
           <p>ユーザー名: <?php echo $_SESSION['input_user_name'];?></p>
+          <a href="./usr_inf_chg.php"><button type="button" class="btn btn-primary rounded-pill my-4 px-5">戻る</button></a>
           <a href="./usr_p_chg.php"><button type="button" class="btn btn-primary rounded-pill my-4 px-5">ユーザー情報へ</button></a>
         </form>
       </div>
