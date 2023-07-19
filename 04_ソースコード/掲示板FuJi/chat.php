@@ -146,7 +146,7 @@ if (!empty($chats)) {
         <!-- コメント入力部分 -->
         <form action="./login_chk.php" method="post" style="height:60px; display: flex; justify-content: space-between;">
           <div style="width: 80%; height:100%; margin-left:5%;">
-            <textarea id="chat" name="chat" cols="70" rows="1" style="width: 100%; height:100%; font-size: 30px; border: 2px solid #666; border-radius: 10px; "></textarea>
+            <textarea id="chat" name="chat" maxlength="120" cols="70" rows="1" style="width: 100%; height:100%; font-size: 30px; border: 2px solid #666; border-radius: 10px; "></textarea>
           </div>
           <div style="width: 120px; margin-right: 8%; margin-left:3%; border-radius: 10px; background-color:#52A9FA; position: relative;">
             <input style="width:100%; height:100%; background: transparent; border-color: transparent transparent transparent transparent; position: absolute; left:0px; z-index: 1000;" type="submit" value="">
