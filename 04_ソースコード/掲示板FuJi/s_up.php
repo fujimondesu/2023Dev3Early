@@ -55,13 +55,13 @@ session_start();
         ?>
 
         <div class="mb-3">
-          <input type="email" class="form-control rounded-pill w-75 m-auto" pattern=".+\.[a-zA-Z0-9][a-zA-Z0-9-]{0,61}[a-zA-Z0-9]" id="exampleFormControlInput1" name="mail" placeholder="メールアドレス">
+          <input type="email" maxlength="30" class="form-control rounded-pill w-75 m-auto" pattern=".+\.[a-zA-Z0-9][a-zA-Z0-9-]{0,61}[a-zA-Z0-9]" id="exampleFormControlInput1" name="mail" placeholder="メールアドレス">
         </div>
         <div class="mb-3">
-          <input type="password" class="form-control rounded-pill w-75 m-auto" id="exampleFormControlInput1" name="pass" placeholder="パスワード">
+          <input type="password" maxlength="16" class="form-control rounded-pill w-75 m-auto" id="exampleFormControlInput2" name="pass" placeholder="パスワード">
         </div>
         <div class="mb-3">
-          <input type="text" class="form-control rounded-pill w-75 m-auto" id="exampleFormControlInput1" name="name" placeholder="ユーザー名">
+          <input type="text" maxlength="10" class="form-control rounded-pill w-75 m-auto" id="exampleFormControlInput3" name="name" placeholder="ユーザー名">
         </div>
         <input class="btn btn-primary rounded-pill my-4 px-5" type="submit" value="確認に進む">
       </form>

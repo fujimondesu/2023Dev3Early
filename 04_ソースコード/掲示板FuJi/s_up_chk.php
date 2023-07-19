@@ -22,18 +22,8 @@ session_start();
       </div>
       <div class="col-3 header-R-parent">
         <a href="./home.php" class="header-R-child-on">home</a>
-        <a href="./usr_inf.html" class="header-R-child-on">user</a>
-
-        <!-- 「login」「logout」切り替え -->
-        <?php
-        $link = "login";
-        if ($_SESSION['user_id'] == "0000000") {
-          $link = "logout";
-        }
-        echo '<a href="' . $link . '.php" class="header-R-child-on">' . $link . '</a>';
-        ?>
-
-        <!-- <a href="./logout.php" class="header-R-child-off">logout</a> -->
+        <div class="header-R-child-off">user</div>
+        <a href="./login.php" class="header-R-child-on">login</a>
       </div>
     </div>
   </div>
