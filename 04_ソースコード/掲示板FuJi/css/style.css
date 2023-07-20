@@ -83,8 +83,9 @@
 }
 
 /*背景色*/
-.text-center {
-  background-color: #F9C1CF;
+.back-color {
+  /* background-color: #F9C1CF; */
+  background-color: #AACE35;
 }
 
 /*リンクのホバー  ホームの＋*/

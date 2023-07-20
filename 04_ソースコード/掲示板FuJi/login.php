@@ -17,7 +17,7 @@ $_SESSION['input_pass'] = "";
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
 </head>
 
-<body class="text-center">
+<body class="text-center back-color">
   <!-- ヘッダー -->
   <div class="container-fluid" style="padding-left: 0">
     <div class="row header-style">

@@ -57,7 +57,7 @@ if (!empty($chats)) {
   <link rel="stylesheet" href="./css/style.css">
 </head>
 
-<body class="text-center">
+<body class="text-center back-color">
   <!-- ヘッダー -->
   <div class="container-fluid" style="padding-left: 0">
     <div class="row header-style">

@@ -16,7 +16,7 @@ session_start();
   <link rel="stylesheet" href="./css/style.css">
 </head>
 
-<body class="text-center">
+<body class="text-center back-color">
   <div class="dropdown">
   </div>
   <!-- ヘッダー -->

@@ -32,7 +32,7 @@ $_SESSION['mail'] = "gest@gmail.com";
   </div>
 
 
-  <body class="text-center">
+  <body class="text-center back-color">
     <h1 class="board" style="font-family: cursive;">掲示板FuJi</h1>
     <div class="container text-center">
         <div class="row justify-content-center">
