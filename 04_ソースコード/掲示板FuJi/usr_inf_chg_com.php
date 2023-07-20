@@ -23,10 +23,10 @@
         <a href="./logout.php" class="header-R-child-on">logout</a>
       </div>
     </div>
-  
-    <!-- 戻るボタン -->
+<!--   
+    戻るボタン
     <div style="width: 80px;">
-      <a href="" class="btn-back">＜戻る</a>
+      <a href="" class="btn-back">＜戻る</a> -->
       
       <!-- こんな処理 -->
       <!--      <a href=" phpの処理 " class="btn-back">＜戻る</a>      -->

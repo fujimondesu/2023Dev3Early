@@ -40,11 +40,11 @@ foreach ($userInfo as $row) {
         </div>
       </div>
     </div>
-  
-    <!-- 戻るボタン -->
+<!--   
+    戻るボタン
     <div style="width: 80px;">
       <a href="" class="btn-back">＜戻る</a>
-    </div>
+    </div> -->
     
   
     <!-- 掲示板FuJi -->
