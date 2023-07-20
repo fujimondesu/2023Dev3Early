@@ -37,10 +37,30 @@
   height: 100%;
 }
 
+
+
+/* ヘッダーの色 */
 .header-style {
-  background-color: pink;
+  background-color: #ffc7c7;
   height: 55px;
 }
+
+/*背景色*/
+.back-color {
+  /* background-color: #F9C1CF; */
+  background-color: #f7ebca;
+}
+
+/* 名前表示場所のカラー */
+.name-color {
+  background-color: #AACB73;
+}
+
+/* 下のスペースのカラー */
+.space-color {
+  background-color: #CDE990;
+}
+
 
 .header-L {
   height: 100%;
@@ -82,11 +102,6 @@
   font-size: 120%;
 }
 
-/*背景色*/
-.back-color {
-  /* background-color: #F9C1CF; */
-  background-color: #AACE35;
-}
 
 /*リンクのホバー  ホームの＋*/
 a:hover {
