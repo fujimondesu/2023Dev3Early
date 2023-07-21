@@ -32,20 +32,6 @@ $_SESSION['input_pass'] = "";
     </div>
   </div>
 
-  <!-- 戻るボタン -->
-  <!-- <div style="width: 80px;">
-    <a href="
-
-    <?php
-    // 現在は「login.php」に設定している。本番は設定を消す
-    $_SESSION['page'] = "login.php";
-    echo $_SESSION['page'];
-    ?>
-        
-    " class="btn-back">＜戻る</a>
-    
-  </div> -->
-
   <!-- 掲示板FuJi -->
   <h1 class="board title-color">掲示板FuJi</h1>
 

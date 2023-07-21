@@ -49,10 +49,6 @@ foreach ($userInfo as $row) {
     </div>
   </div>
   
-    <!-- 戻るボタン
-    <div style="width: 80px;">
-      <a href="#" class="btn-back">＜戻る</a>
-    </div> -->
 
     <!-- 掲示板FuJi -->
     <h1 class="board title-color">掲示板FuJi</h1>

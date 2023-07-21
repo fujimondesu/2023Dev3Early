@@ -33,11 +33,6 @@ session_start();
     </div>
   </div>
 
-  <!-- 戻るボタン
-  <div style="width: 80px;">
-    <a href="#" class="btn-back" onclick="window.history.back(); return false;">＜戻る</a>
-  </div> -->
-
 
   <h1 class="my-5 title-color" style="font-family: cursive;">掲示板FuJi</h1>
   <div class="container text-center">
