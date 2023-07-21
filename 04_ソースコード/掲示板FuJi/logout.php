@@ -33,7 +33,7 @@ $_SESSION['mail'] = "gest@gmail.com";
 
 
   <body class="text-center back-color">
-    <h1 class="board" style="font-family: cursive;">掲示板FuJi</h1>
+    <h1 class="board title-color" style="font-family: cursive;">掲示板FuJi</h1>
     <div class="container text-center">
         <div class="row justify-content-center">
             <form class="border rounded bg-white col-md-4 p-3">

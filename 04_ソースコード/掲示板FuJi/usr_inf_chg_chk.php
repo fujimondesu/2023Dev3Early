@@ -37,7 +37,7 @@ session_start();
     
   
     <!-- 掲示板FuJi -->
-    <h1 class="board">掲示板FuJi</h1>
+    <h1 class="board title-color">掲示板FuJi</h1>
   
     <!-- フォーム -->
     <div class="container-fluid">

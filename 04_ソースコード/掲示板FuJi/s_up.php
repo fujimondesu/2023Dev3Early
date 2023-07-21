@@ -39,7 +39,7 @@ session_start();
   </div> -->
 
 
-  <h1 class="my-5" style="color: #ffffff; font-family: cursive;">掲示板FuJi</h1>
+  <h1 class="my-5 title-color" style="font-family: cursive;">掲示板FuJi</h1>
   <div class="container text-center">
     <div class="row justify-content-center">
       <form action="s_up_input_chk.php" method="post" class="border rounded bg-white col-md-4 p-3">

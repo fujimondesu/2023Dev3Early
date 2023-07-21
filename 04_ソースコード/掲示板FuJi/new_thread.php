@@ -50,7 +50,7 @@ session_start();
   </div> -->
 
   <!-- フォーム -->
-  <h1 class="my-5" style="color: #ffffff; font-family: cursive;">掲示板FuJi</h1>
+  <h1 class="my-5 title-color" style="font-family: cursive;">掲示板FuJi</h1>
   <div class="container text-center">
     <div class="row justify-content-center">
 
