@@ -36,15 +36,16 @@ session_start();
   </div>
 
   
-  <body class="text-center">
-    <h1 class="my-5" style="color: #ffffff; font-family: cursive;">掲示板FuJi</h1>
+  <body class="text-center back-color">
+    <h1 class="my-5 title-color" style="font-family: cursive;">掲示板FuJi</h1>
     <div class="container text-center">
         <div class="row justify-content-center">
             <form class="border rounded bg-white col-md-4 p-3">
                 <h3>こちらの内容で間違いありませんか？</h3>
                 <p></p>
                 <p>パスワード : <?php echo $_SESSION['input_pass'];?></p>
-                <a href="./p_chg_com.html"><button type="button" class="btn btn-primary rounded-pill my-4 px-5">パスワード変更</button></a>
+                <a href="./p_chg_input.php"><button type="button" class="btn btn-primary rounded-pill my-4 px-5">戻る</button></a>
+                <a href="./p_chg.php"><button type="button" class="btn btn-primary rounded-pill my-4 px-5">変更する</button></a>
                 
             </form>
         </div>

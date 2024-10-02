@@ -1,6 +1,8 @@
 
 <?php
 session_start();
+$_SESSION['input_mail'] = "";
+$_SESSION['input_pass'] = "";
 ?>
 <!-- ログイン画面 -->
 <!DOCTYPE html>
@@ -15,7 +17,7 @@ session_start();
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
 </head>
 
-<body class="text-center">
+<body class="text-center back-color">
   <!-- ヘッダー -->
   <div class="container-fluid" style="padding-left: 0">
     <div class="row header-style">
@@ -30,22 +32,8 @@ session_start();
     </div>
   </div>
 
-  <!-- 戻るボタン -->
-  <!-- <div style="width: 80px;">
-    <a href="
-
-    <?php
-    // 現在は「login.php」に設定している。本番は設定を消す
-    $_SESSION['page'] = "login.php";
-    echo $_SESSION['page'];
-    ?>
-        
-    " class="btn-back">＜戻る</a>
-    
-  </div> -->
-
   <!-- 掲示板FuJi -->
-  <h1 class="board">掲示板FuJi</h1>
+  <h1 class="board title-color">掲示板FuJi</h1>
 
   <!-- フォーム -->
   <div class="container-fluid">
@@ -63,16 +51,16 @@ session_start();
         ?>
 
         <div class="mt-3 mb-3">
-          <input type="text" class="form-control rounded-pill w-75 m-auto" name="mail" placeholder="メールアドレス" />
+          <input type="text" maxlength="30" class="form-control rounded-pill w-75 m-auto" name="mail" placeholder="メールアドレス" />
         </div>
         <div class="mb-3">
-          <input type="text" class="form-control rounded-pill w-75 m-auto" name="pass" placeholder="パスワード" />
+          <input type="text" maxlength="16" class="form-control rounded-pill w-75 m-auto" name="pass" placeholder="パスワード" />
         </div>
         <div>
           <input type="submit" class="btn btn-primary rounded-pill my-4 px-5" value="ログイン" />
         </div>
         <div>
-          <a href="./p_chg_usr_chk.html">
+          <a href="./p_chg_usr_chk.php">
             <button type="button" class="btn btn-link">
               パスワードを忘れた方はこちら
             </button>

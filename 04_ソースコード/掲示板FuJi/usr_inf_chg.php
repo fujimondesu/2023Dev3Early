@@ -26,7 +26,7 @@ foreach ($userInfo as $row) {
     <link rel="stylesheet" href="./css/style.css">
   </head>
 
-  <body class="text-center">
+  <body class="text-center back-color">
     <!-- ヘッダー -->
     <div class="container-fluid" style="padding-left: 0">
       <div class="row header-style">
@@ -40,15 +40,10 @@ foreach ($userInfo as $row) {
         </div>
       </div>
     </div>
-  
-    <!-- 戻るボタン -->
-    <div style="width: 80px;">
-      <a href="" class="btn-back">＜戻る</a>
-    </div>
     
   
     <!-- 掲示板FuJi -->
-    <h1 class="board">掲示板FuJi</h1>
+    <h1 class="board title-color">掲示板FuJi</h1>
   
     <!-- フォーム -->
     <div class="container-fluid">
@@ -68,14 +63,14 @@ foreach ($userInfo as $row) {
 
           <p>ユーザー名変更</p>
           <div class="mb-3">
-            <input type="text" class="form-control rounded-pill w-75 m-auto" name="name" placeholder="ユーザー名" />
+            <input type="text" maxlength="10" class="form-control rounded-pill w-75 m-auto" name="name" placeholder="ユーザー名" />
           </div>
           <p>パスワード変更</p>
           <div class="mb-3">
-            <input type="text" class="form-control rounded-pill w-75 m-auto" name="pass1" placeholder="パスワード" />
+            <input type="text" maxlength="16" class="form-control rounded-pill w-75 m-auto" name="pass1" placeholder="パスワード" />
           </div>
           <div class="mb-3">
-            <input type="text" class="form-control rounded-pill w-75 m-auto" name="pass2" placeholder="確認用パスワード" />
+            <input type="text" maxlength="16" class="form-control rounded-pill w-75 m-auto" name="pass2" placeholder="確認用パスワード" />
           </div>
           <input class="btn btn-primary rounded-pill my-4 px-5" type="submit" value="確認に進む">
         </form>

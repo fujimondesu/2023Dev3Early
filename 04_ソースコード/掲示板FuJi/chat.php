@@ -57,7 +57,7 @@ if (!empty($chats)) {
   <link rel="stylesheet" href="./css/style.css">
 </head>
 
-<body class="text-center">
+<body class="text-center back-color">
   <!-- ヘッダー -->
   <div class="container-fluid" style="padding-left: 0">
     <div class="row header-style">
@@ -85,11 +85,11 @@ if (!empty($chats)) {
 
   <div class="container-fluid">
     <div class="row" style="height: 94vh;">
-      <div class="col-sm-3 col-xs-12" style="padding:0; background-color: #D9D9D9;">
+      <div class="col-sm-3 col-xs-12 space-color" style="padding:0;">
 
         <!-- ジャンル一覧 -->
         <div class="d-flex flex-column align-items-stretch bg-white">
-          <div style="background-color: aqua; height: 50px; display: flex; justify-content: space-between;">
+          <div class="name-color" style="height: 50px; display: flex; justify-content: space-between;">
             <div style="width:80%; display: flex; justify-content: center; align-items: center; font-size:20px;">
               <?php
               echo $userName;

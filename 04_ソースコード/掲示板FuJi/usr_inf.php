@@ -27,7 +27,7 @@ foreach ($userInfo as $row) {
     <link rel="stylesheet" href="./css/style.css">
   </head>
 
-  <body class="text-center">
+  <body class="text-center back-color">
     <!-- ヘッダー -->
     <div class="container-fluid" style="padding-left: 0">
       <div class="row header-style">
@@ -49,13 +49,9 @@ foreach ($userInfo as $row) {
     </div>
   </div>
   
-    <!-- 戻るボタン -->
-    <div style="width: 80px;">
-      <a href="#" class="btn-back">＜戻る</a>
-    </div>
 
     <!-- 掲示板FuJi -->
-    <h1 class="board">掲示板FuJi</h1>
+    <h1 class="board title-color">掲示板FuJi</h1>
   
     <!-- フォーム -->
     <div class="container-fluid">

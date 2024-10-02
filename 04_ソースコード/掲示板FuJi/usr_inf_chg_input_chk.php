@@ -2,7 +2,14 @@
 session_start();
 require_once './DBManager.php';
 $dbmng = new DBManager();
-$userNameDouble = $dbmng->userDoubleCheck($_POST['name']);
+
+// 変更後のユーザー名が同じか
+if($_POST['name'] == $_SESSION['name']) {
+    $userNameDouble = [];
+}else{
+    $userNameDouble = $dbmng->userDoubleCheck($_POST['name']);
+}
+
 // ユーザー名とパスワードが入力されているか
 if(empty($_POST['name']) || empty($_POST['pass1']) || empty($_POST['pass2'])) {
     $_SESSION['error'] = "ユーザー名またはパスワードが入力されていません。";

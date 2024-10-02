@@ -15,7 +15,7 @@ session_start();
     <link rel="stylesheet" href="./css/style.css">
   </head>
 
-  <body class="text-center">
+  <body class="text-center back-color">
     <!-- ヘッダー -->
     <div class="container-fluid" style="padding-left: 0">
       <div class="row header-style">
@@ -30,14 +30,10 @@ session_start();
     </div>
   </div>
   
-    <!-- 戻るボタン -->
-    <div style="width: 80px;">
-      <a href="#" class="btn-back">＜戻る</a>
-    </div>
     
   
     <!-- 掲示板FuJi -->
-    <h1 class="board">掲示板FuJi</h1>
+    <h1 class="board title-color">掲示板FuJi</h1>
   
     <!-- フォーム -->
     <div class="container-fluid">
@@ -47,7 +43,8 @@ session_start();
           <!-- メールアドレス いるかも -->
           <p>パスワード: <?php echo $_SESSION['input_pass'];?></p>
           <p>ユーザー名: <?php echo $_SESSION['input_user_name'];?></p>
-          <a href="./usr_p_chg.php"><button type="button" class="btn btn-primary rounded-pill my-4 px-5">ユーザー情報へ</button></a>
+          <a href="./usr_inf_chg.php"><button type="button" class="btn btn-primary rounded-pill my-4 px-5">戻る</button></a>
+          <a href="./usr_p_chg.php"><button type="button" class="btn btn-primary rounded-pill my-4 px-5">変更する</button></a>
         </form>
       </div>
     </div>

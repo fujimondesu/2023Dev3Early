@@ -1,8 +1,5 @@
 <?php
 session_start();
-$_SESSION ['name'] = $_POST['name'];
-$_SESSION ['mail'] = $_POST['mail'];
-$_SESSION ['pass'] = $_POST['pass'];
 ?>
 
 <!doctype html>
@@ -25,33 +22,24 @@ $_SESSION ['pass'] = $_POST['pass'];
       </div>
       <div class="col-3 header-R-parent">
         <a href="./home.php" class="header-R-child-on">home</a>
-        <a href="./usr_inf.html" class="header-R-child-on">user</a>
-
-        <!-- 「login」「logout」切り替え -->
-        <?php
-        $link = "login";
-        if ($_SESSION['user_id'] == "0000000") {
-          $link = "logout";
-        }
-        echo '<a href="' . $link . '.php" class="header-R-child-on">' . $link . '</a>';
-        ?>
-
-        <!-- <a href="./logout.php" class="header-R-child-off">logout</a> -->
+        <div class="header-R-child-off">user</div>
+        <a href="./login.php" class="header-R-child-on">login</a>
       </div>
     </div>
   </div>
 
 
-  <body class="text-center" style="background-color: #f596aa;">
-    <h1 class="my-5" style="color: #ffffff; font-family: cursive;">掲示板FuJi</h1>
+  <body class="text-center back-color">
+    <h1 class="my-5 title-color" style="font-family: cursive;">掲示板FuJi</h1>
     <div class="container text-center">
         <div class="row justify-content-center">
             <form class="border rounded bg-white col-md-4 p-3">
                 <h3>こちらの内容で登録しますか。</h3>
                 <p></p>
-                <p>メールアドレス : <?php echo $_SESSION ['mail']?></p>
-                <p>パスワード: <?php echo $_SESSION['pass'];?></p>
-                <p>ユーザー名: <?php echo $_SESSION['name'];?></p>
+                <p>メールアドレス : <?php echo $_SESSION ['input_mail']?></p>
+                <p>パスワード: <?php echo $_SESSION['input_pass'];?></p>
+                <p>ユーザー名: <?php echo $_SESSION['input_user_name'];?></p>
+                <a href="./s_up.php"><button type="button" class="btn btn-primary rounded-pill my-4 px-5">戻る</button></a>
                 <a href="./usr_reg.php"><button type="button" class="btn btn-primary rounded-pill my-4 px-5">登録する</button></a>
             </form>
         </div>
